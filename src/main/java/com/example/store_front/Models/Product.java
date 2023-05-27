@@ -14,6 +14,7 @@ import java.util.Map;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Product {
+    Long id;
     private String name;
     private double count;
     private double price;
