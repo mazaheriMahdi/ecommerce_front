@@ -1,0 +1,6 @@
+#card{
+    -fx-min-width: 10%;
+    -fx-min-height: 200px;
+    -fx-background-color: #525252;
+    -fx-border-radius: 10px;
+}
