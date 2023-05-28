@@ -38,7 +38,7 @@ public class ProductContainer extends FlowPane {
             List<Product> products = productService.getProducts();
             List<ProductCard> productCards = new ArrayList<>();
             for (Product product : products) {
-                ProductCard productCard = new ProductCard(product.getName(), product.getPrice(), product.getImage());
+                ProductCard productCard = new ProductCard(product.getName(), product.getPrice(), product.getImage() , product.getId());
                 productCards.add(productCard);
                 ProductContainer.setMargin(productCard, new Insets(5));
             }

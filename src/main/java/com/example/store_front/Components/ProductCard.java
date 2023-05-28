@@ -1,6 +1,7 @@
 package com.example.store_front.Components;
 
 
+import com.example.store_front.Service.CartController;
 import de.jensd.fx.glyphs.GlyphsDude;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -17,12 +18,14 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
+
 public class ProductCard extends VBox {
     private ImageView image;
     private Text name;
     private Text price;
 
-    public ProductCard(String name, double price, String image) {
+    public ProductCard(String name, double price, String image , Long productId) {
         super();
         this.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         this.getStyleClass().add("card");
@@ -57,6 +60,13 @@ public class ProductCard extends VBox {
         HBox.setMargin(button , new Insets( 0 , 10, 0, 0));
         this.getChildren().addAll(this.image,this.name ,hBox);
 
+        button.setOnMouseClicked(mouseEvent -> {
+            try {
+                CartController.addToCart(productId , 1);
+            } catch (IOException | InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
 
