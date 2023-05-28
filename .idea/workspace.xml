@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e16fe36-6b60-4e8e-a01c-59f02c6b2cc4" name="Changes" comment="add back and add to cart btn to SingleProductPage">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/ResponseModel/PagesResponseModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Product/PageChangeEvent.java" afterDir="false" />
+    <list default="true" id="4e16fe36-6b60-4e8e-a01c-59f02c6b2cc4" name="Changes" comment="handle pagination logics">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/Review.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/PaginationToolbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/PaginationToolbar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/ProductContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/ProductContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/MainPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Product/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/SingleProductPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/SingleProductPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Router/Router.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Router/Router.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/StoreApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/StoreApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +22,8 @@
       <list>
         <option value="CSS File" />
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -79,7 +78,7 @@
       <workItem from="1685105190878" duration="11622000" />
       <workItem from="1685126380395" duration="11613000" />
       <workItem from="1685192760944" duration="9426000" />
-      <workItem from="1685256443975" duration="26016000" />
+      <workItem from="1685256443975" duration="28020000" />
     </task>
     <task id="LOCAL-00001" summary="add id to product">
       <created>1685199465103</created>
@@ -186,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685285249996</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="handle pagination logics">
+      <created>1685294224777</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1685294224777</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,7 +212,8 @@
     <MESSAGE value="create router class move StoreApp code to MainPage and create SingleProductPage &#10;create Router for routing ." />
     <MESSAGE value="create controller that show an indicator when image is loading" />
     <MESSAGE value="add back and add to cart btn to SingleProductPage" />
-    <option name="LAST_COMMIT_MESSAGE" value="add back and add to cart btn to SingleProductPage" />
+    <MESSAGE value="handle pagination logics" />
+    <option name="LAST_COMMIT_MESSAGE" value="handle pagination logics" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

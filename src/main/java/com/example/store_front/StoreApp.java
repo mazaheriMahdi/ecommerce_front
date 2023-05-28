@@ -8,8 +8,6 @@ public class StoreApp extends Application {
         EventHandler eventHandler = new EventHandler();
         Router.setStage(stage);
         Router.toMainPage();
-
-
     }
 
     public static void main(String[] args) {
