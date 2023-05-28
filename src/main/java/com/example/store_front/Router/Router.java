@@ -5,6 +5,7 @@ import com.example.store_front.Models.Product;
 import com.example.store_front.Page.MainPage;
 import com.example.store_front.Page.SingleProductPage;
 import javafx.application.Platform;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -18,10 +19,14 @@ public class Router {
     static double screenWeight;
     static List<RoutEvent> listener;
 
+    static List<Node> pages;
+
+
     static {
         screenHeight = Screen.getPrimary().getBounds().getHeight() - 100;
         screenWeight = Screen.getPrimary().getBounds().getWidth() - 50;
         listener = new ArrayList<>();
+        pages = new ArrayList<>();
     }
 
     public static void setStage(Stage stage) {
