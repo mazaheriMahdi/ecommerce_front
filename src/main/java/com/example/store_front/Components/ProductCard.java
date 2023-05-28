@@ -20,7 +20,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 
 public class ProductCard extends VBox {
-    private ImageView image;
+    private ImageViewWithSpinner image;
     private Text name;
     private Text price;
 
@@ -34,10 +34,7 @@ public class ProductCard extends VBox {
         this.maxHeight(240);
 
 
-        this.image = new ImageView(new Image(product.getImage(), true));
-        this.image.setFitHeight(120);
-        this.image.setFitWidth(120);
-
+        this.image = new ImageViewWithSpinner(product.getImage(), 120, 120);
 
         this.name = new Text(product.getName());
         this.name.setFill(Color.WHITE);
