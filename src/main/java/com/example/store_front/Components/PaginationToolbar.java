@@ -11,21 +11,37 @@ import javafx.scene.text.Text;
 
 public class PaginationToolbar extends HBox {
 
-    public PaginationToolbar() {
+    public PaginationToolbar(ProductContainer productContainer) {
         super();
         this.getStyleClass().add("darkPrimaryBack");
         this.setPadding(new Insets(20));
         Button next = new Button();
         next.getStyleClass().add("paginationBtn");
+        next.setOnMouseClicked(e -> {
+            productContainer.nextPage();
+        });
+
 
         Button previous = new Button();
         previous.getStyleClass().add("paginationBtn");
+        previous.setOnMouseClicked(e -> {
+            productContainer.prevPage();
+        });
 
         Button first = new Button();
         first.getStyleClass().add("paginationBtn");
+        first.setOnMouseClicked(e -> {
+            productContainer.firstPage();
+        });
+
 
         Button last = new Button();
         last.getStyleClass().add("paginationBtn");
+        last.setOnMouseClicked(e -> {
+            productContainer.lastPage();
+        });
+
+
 
         Text nextText = GlyphsDude.createIcon(FontAwesomeIcon.ARROW_CIRCLE_RIGHT, "20px");
         nextText.setFill(Color.WHITE);
@@ -42,6 +58,8 @@ public class PaginationToolbar extends HBox {
         Text lastText = GlyphsDude.createIcon(FontAwesomeIcon.FAST_FORWARD, "10px");
         lastText.setFill(Color.WHITE);
         last.setGraphic(lastText);
+
+
 
         this.getChildren().addAll(first, previous, next, last);
         this.setSpacing(10);

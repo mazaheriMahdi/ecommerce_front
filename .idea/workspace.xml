@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e16fe36-6b60-4e8e-a01c-59f02c6b2cc4" name="Changes" comment="create router class move StoreApp code to MainPage and create SingleProductPage &#10;create Router for routing .">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/ImageViewWithSpinner.java" afterDir="false" />
+    <list default="true" id="4e16fe36-6b60-4e8e-a01c-59f02c6b2cc4" name="Changes" comment="add back and add to cart btn to SingleProductPage">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/ResponseModel/PagesResponseModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Product/PageChangeEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/NavBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/NavBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/ProductCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/ProductCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/SingleProductPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/SingleProductPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/PaginationToolbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/PaginationToolbar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/ProductContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/ProductContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/MainPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Product/ProductService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +23,8 @@
       <list>
         <option value="CSS File" />
         <option value="FxmlFile" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -77,7 +79,7 @@
       <workItem from="1685105190878" duration="11622000" />
       <workItem from="1685126380395" duration="11613000" />
       <workItem from="1685192760944" duration="9426000" />
-      <workItem from="1685256443975" duration="18813000" />
+      <workItem from="1685256443975" duration="26016000" />
     </task>
     <task id="LOCAL-00001" summary="add id to product">
       <created>1685199465103</created>
@@ -170,7 +172,21 @@
       <option name="project" value="LOCAL" />
       <updated>1685282551017</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="create controller that show an indicator when image is loading">
+      <created>1685285201099</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1685285201099</updated>
+    </task>
+    <task id="LOCAL-00015" summary="add back and add to cart btn to SingleProductPage">
+      <created>1685285249996</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1685285249996</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,6 +204,23 @@
     <MESSAGE value="create custome alert pane" />
     <MESSAGE value="add MessageResponseModel and create custome event for adding to cart &#10;create event handler which is gonna handle all event" />
     <MESSAGE value="create router class move StoreApp code to MainPage and create SingleProductPage &#10;create Router for routing ." />
-    <option name="LAST_COMMIT_MESSAGE" value="create router class move StoreApp code to MainPage and create SingleProductPage &#10;create Router for routing ." />
+    <MESSAGE value="create controller that show an indicator when image is loading" />
+    <MESSAGE value="add back and add to cart btn to SingleProductPage" />
+    <option name="LAST_COMMIT_MESSAGE" value="add back and add to cart btn to SingleProductPage" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Product/ProductService.java</url>
+          <line>93</line>
+          <properties class="com.example.store_front.Service.Product.ProductService" method="last">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

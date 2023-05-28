@@ -25,7 +25,7 @@ public class MainPage  extends BorderPane {
         VBox vBox = new VBox();
         vBox.getChildren().add(new ProductContainerHeader());
         vBox.getChildren().add(productContainer);
-        vBox.getChildren().add(new PaginationToolbar());
+        vBox.getChildren().add(new PaginationToolbar(productContainer));
         vBox.setPadding(new Insets(10));
         vBox.getStyleClass().add("darkPrimaryBack");
         ScrollPane scrollPane = new ScrollPane(vBox);
