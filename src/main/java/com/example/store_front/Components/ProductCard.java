@@ -1,7 +1,8 @@
 package com.example.store_front.Components;
 
 
-import com.example.store_front.Controller.CartController;
+import com.example.store_front.Models.Product;
+import com.example.store_front.Router.Router;
 import com.example.store_front.Service.Cart.CartService;
 import de.jensd.fx.glyphs.GlyphsDude;
 import javafx.geometry.Insets;
@@ -23,7 +24,7 @@ public class ProductCard extends VBox {
     private Text name;
     private Text price;
 
-    public ProductCard(String name, double price, String image , Long productId) {
+    public ProductCard(Product product) {
         super();
         this.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         this.getStyleClass().add("card");
@@ -33,34 +34,40 @@ public class ProductCard extends VBox {
         this.maxHeight(240);
 
 
-        this.image = new ImageView(new Image(image , true));
+        this.image = new ImageView(new Image(product.getImage(), true));
         this.image.setFitHeight(120);
         this.image.setFitWidth(120);
 
 
-        this.name = new Text(name);
+        this.name = new Text(product.getName());
         this.name.setFill(Color.WHITE);
-        this.name.setFont(Font.font(Font.getFamilies().get(2) , FontWeight.BLACK , 15));
+        this.name.setFont(Font.font(Font.getFamilies().get(2), FontWeight.BLACK, 15));
 
 
-        this.price = new Text(String.valueOf(price) + "$");
+        this.price = new Text(product.getPrice() + "$");
         this.price.setFill(Color.WHITE);
-        this.price.setFont(Font.font(Font.getFamilies().get(5) , FontWeight.BOLD , 14));
+        this.price.setFont(Font.font(Font.getFamilies().get(5), FontWeight.BOLD, 14));
 
 
         HBox hBox = new HBox();
         Button button = new Button("Add to cart");
-        Text icon = GlyphsDude.createIcon(de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon.SHOPPING_CART , "15px");
+        Text icon = GlyphsDude.createIcon(de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon.SHOPPING_CART, "15px");
         icon.setFill(Color.WHITE);
         button.setGraphic(icon);
-        hBox.getChildren().addAll(button , this.price);
+        hBox.getChildren().addAll(button, this.price);
         hBox.setAlignment(Pos.CENTER);
-        HBox.setMargin(button , new Insets( 0 , 10, 0, 0));
-        this.getChildren().addAll(this.image,this.name ,hBox);
+        HBox.setMargin(button, new Insets(0, 10, 0, 0));
+        this.getChildren().addAll(this.image, this.name, hBox);
+
+
+        this.setOnMouseClicked(mouseEvent -> {
+            Router.toProductPage(product);
+        });
 
         button.setOnMouseClicked(mouseEvent -> {
             try {
-                CartService.addToCart(productId , 1);
+                CartService.addToCart(product.getId(), 1);
+                mouseEvent.consume();
 
             } catch (IOException | InterruptedException e) {
                 throw new RuntimeException(e);

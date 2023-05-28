@@ -56,7 +56,7 @@ public class NavBar  extends HBox {
 
         Circle circle = new Circle(25);
         circle.maxHeight(50);
-        ImagePattern imagePattern = new ImagePattern(new Image("https://img.netzwelt.de/dw1200_dh900_sw2248_sh1686_sx2_sy581_sr4x3_nu2/picture/original/2022/05/avatar-the-way-of-water-339746.jpg" , 280 , 280 , true , true));
+        ImagePattern imagePattern = new ImagePattern(new Image("https://img.netzwelt.de/dw1200_dh900_sw2248_sh1686_sx2_sy581_sr4x3_nu2/picture/original/2022/05/avatar-the-way-of-water-339746.jpg" , 280 , 280 ,false , false));
         circle.setFill(imagePattern);
         this.getChildren().addAll(circle , vBox ,search);
     }
