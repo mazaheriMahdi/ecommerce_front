@@ -1,4 +1,4 @@
-package com.example.store_front.Models;
+package com.example.store_front.Models.RequestModel;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

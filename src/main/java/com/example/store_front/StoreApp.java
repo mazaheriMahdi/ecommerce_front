@@ -17,7 +17,7 @@ import java.io.IOException;
 public class StoreApp extends Application {
     @Override
     public void start(Stage stage) {
-
+        EventHandler eventHandler = new EventHandler();
         // get screen size
         double screenHeight = Screen.getPrimary().getBounds().getHeight() - 100;
         double screenWeight = Screen.getPrimary().getBounds().getWidth() - 50;
@@ -35,7 +35,7 @@ public class StoreApp extends Application {
         vBox.getChildren().add(productContainer);
         vBox.getChildren().add(new PaginationToolbar());
         vBox.setPadding(new Insets(10));
-
+        vBox.getStyleClass().add("darkPrimaryBack");
         ScrollPane scrollPane = new ScrollPane(vBox);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setFitToWidth(true);

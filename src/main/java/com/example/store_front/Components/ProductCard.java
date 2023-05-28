@@ -1,17 +1,15 @@
 package com.example.store_front.Components;
 
 
-import com.example.store_front.Service.CartController;
+import com.example.store_front.Controller.CartController;
+import com.example.store_front.Service.Cart.CartService;
 import de.jensd.fx.glyphs.GlyphsDude;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.SplitPane;
-import javafx.scene.effect.BlendMode;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -62,7 +60,8 @@ public class ProductCard extends VBox {
 
         button.setOnMouseClicked(mouseEvent -> {
             try {
-                CartController.addToCart(productId , 1);
+                CartService.addToCart(productId , 1);
+
             } catch (IOException | InterruptedException e) {
                 throw new RuntimeException(e);
             }
