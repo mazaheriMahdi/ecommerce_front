@@ -45,7 +45,10 @@ public class ProductService {
 
         for (Map<String , Object> productMap : productsMap) {
             Product product = new Product();
-
+            System.out.println("-------------------" + productMap.get("id").toString());
+            Double doubleId = Double.parseDouble(productMap.get("id").toString());
+            Long id = doubleId.longValue();
+            product.setId(id);
             product.setName(productMap.get("name").toString());
             product.setCount(Double.parseDouble(productMap.get("count").toString()));
             product.setPrice(Double.parseDouble(productMap.get("price").toString()));

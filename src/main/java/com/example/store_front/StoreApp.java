@@ -29,14 +29,12 @@ public class StoreApp extends Application {
         borderPane.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         borderPane.getStyleClass().add("darkPrimaryBack");
 
-
         ProductContainer productContainer = new ProductContainer();
         VBox vBox = new VBox();
         vBox.getChildren().add(new ProductContainerHeader());
         vBox.getChildren().add(productContainer);
         vBox.getChildren().add(new PaginationToolbar());
         vBox.setPadding(new Insets(10));
-        vBox.getStyleClass().add("darkPrimaryBack");
 
         ScrollPane scrollPane = new ScrollPane(vBox);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
