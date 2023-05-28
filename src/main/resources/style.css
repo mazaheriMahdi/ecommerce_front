@@ -15,13 +15,6 @@
     -fx-text-fill: white;
 }
 
-.darkPrimaryBack {
-    -fx-background-color: #13151C;
-}
-
-.darkAccent {
-    -fx-background-color: #1B222C;
-}
 
 .button {
     -fx-background-color: #531616;
@@ -51,4 +44,10 @@
 
 
 }
+.darkPrimaryBack {
+    -fx-background-color: #13151C;
+}
 
+.darkAccent {
+    -fx-background-color: #1B222C;
+}
