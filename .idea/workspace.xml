@@ -4,15 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e16fe36-6b60-4e8e-a01c-59f02c6b2cc4" name="Changes" comment="add permission to gson to models">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/AddToCartRequestModel.java" afterDir="false" />
+    <list default="true" id="4e16fe36-6b60-4e8e-a01c-59f02c6b2cc4" name="Changes" comment="create exception for handling cart exception">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/CustomAlert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Controller/CartController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/EventHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Exception/AddToCartException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/ResponseModel/MessageResponseModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/ProductCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/ProductCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/ProductContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/ProductContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Constant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/CartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/AddToCartRequestModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/RequestModel/AddToCartRequestModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Cart/CartService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/StoreApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/StoreApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +27,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -78,7 +84,7 @@
       <workItem from="1685105190878" duration="11622000" />
       <workItem from="1685126380395" duration="11613000" />
       <workItem from="1685192760944" duration="9426000" />
-      <workItem from="1685256443975" duration="3199000" />
+      <workItem from="1685256443975" duration="7374000" />
     </task>
     <task id="LOCAL-00001" summary="add id to product">
       <created>1685199465103</created>
@@ -94,7 +100,49 @@
       <option name="project" value="LOCAL" />
       <updated>1685259716232</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="create add to cart request model for sending to backend">
+      <created>1685261400616</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1685261400616</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add cart endpoint to Constant.java">
+      <created>1685261421535</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1685261421535</updated>
+    </task>
+    <task id="LOCAL-00005" summary="create logic for sending addCartItemRequestModel to backend">
+      <created>1685261480097</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1685261480097</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fix id in product services">
+      <created>1685261529940</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1685261529940</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add click event to product cart">
+      <created>1685261569441</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1685261569441</updated>
+    </task>
+    <task id="LOCAL-00008" summary="create exception for handling cart exception">
+      <created>1685269869851</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1685269869851</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -103,6 +151,12 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add id to product" />
     <MESSAGE value="add permission to gson to models" />
-    <option name="LAST_COMMIT_MESSAGE" value="add permission to gson to models" />
+    <MESSAGE value="create add to cart request model for sending to backend" />
+    <MESSAGE value="add cart endpoint to Constant.java" />
+    <MESSAGE value="create logic for sending addCartItemRequestModel to backend" />
+    <MESSAGE value="fix id in product services" />
+    <MESSAGE value="add click event to product cart" />
+    <MESSAGE value="create exception for handling cart exception" />
+    <option name="LAST_COMMIT_MESSAGE" value="create exception for handling cart exception" />
   </component>
 </project>
