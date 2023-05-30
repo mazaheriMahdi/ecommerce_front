@@ -33,6 +33,7 @@ public class MainPage  extends BorderPane {
         scrollPane.setFitToWidth(true);
         scrollPane.setBorder(Border.EMPTY);
         scrollPane.setBackground(Background.EMPTY);
+        scrollPane.setFitToHeight(true);
         this.setCenter(scrollPane);
     }
 }

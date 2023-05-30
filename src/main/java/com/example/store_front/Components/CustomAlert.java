@@ -38,6 +38,7 @@ public class CustomAlert extends Stage {
         VBox vBox = new VBox();
 
         Button button = new Button("OK");
+        button.setDefaultButton(true);
         vBox.getChildren().add(button);
         button.setOnAction(e -> this.close());
         borderPane.setPadding(new javafx.geometry.Insets(10));

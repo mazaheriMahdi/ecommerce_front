@@ -6,7 +6,6 @@ public class StoreApp extends Application {
     @Override
     public void start(Stage stage) {
         EventHandler eventHandler = new EventHandler();
-        Router.setStage(stage);
         Router.toMainPage();
     }
 

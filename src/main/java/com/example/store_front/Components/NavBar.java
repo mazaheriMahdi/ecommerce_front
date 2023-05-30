@@ -32,7 +32,7 @@ public class NavBar  extends HBox {
         VBox vBox= new VBox();
         Text first_name = new Text("Mahdi mazaheri");
         Text credit = new Text("19$");
-        credit.setFont(Font.font(Font.getFamilies().get(5) , FontWeight.LIGHT , 13));
+        credit.setFont(Font.font(Font.getFamilies().get(6) , FontWeight.LIGHT , 13));
         credit.setFill(Color.WHITE);
 
         first_name.setFill(Color.WHITE);

@@ -34,11 +34,9 @@ public class ProductService {
     static public List<Product> parsProducts(String response) {
         Map<String, Object> data = new Gson().fromJson(response, new TypeToken<Map<String, Object>>() {
         }.getType());
-        System.out.println(data);
         Map<String, Map<String, Object>> links = new Gson().fromJson(new Gson().toJson(data.get("_links")), new TypeToken<Map<String, Map<String, Object>>>() {
         }.getType());
 
-        System.out.println(links);
 
         PagesResponseModel.First.href = links.get("first").get("href").toString();
         PagesResponseModel.Last.href = links.get("last").get("href").toString();
@@ -72,7 +70,6 @@ public class ProductService {
             product.setProductProperties(productProperties);
             products.add(product);
         }
-        System.out.println(products);
 
         return products;
 
@@ -98,7 +95,6 @@ public class ProductService {
 
     static public List<Product> getProducts(String pageURL) throws IOException, InterruptedException {
         if (pageURL == null) pageURL = PRODUCT_API_END_POINT;
-        System.out.println(pageURL + " =---------dadadas ");
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .GET()
                 .uri(URI.create(pageURL))

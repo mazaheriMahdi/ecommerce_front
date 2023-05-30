@@ -2,15 +2,20 @@ package com.example.store_front.Page;
 
 import com.example.store_front.Components.ImageViewWithSpinner;
 import com.example.store_front.Components.NavBar;
+import com.example.store_front.Components.ReviewBox;
 import com.example.store_front.Models.Product;
+import com.example.store_front.Models.Review;
 import com.example.store_front.Service.Cart.CartService;
+import com.example.store_front.Service.Review.ReviewService;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -22,9 +27,11 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SingleProductPage extends BorderPane {
-    public SingleProductPage(Product product) {
+    public SingleProductPage(Product product , List<Review> reviews) {
         super();
 
         this.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
@@ -36,6 +43,7 @@ public class SingleProductPage extends BorderPane {
 
         HBox hBox = new HBox();
         VBox vBox = new VBox();
+        VBox root = new VBox();
 
         Button addToCart = new Button("Add To Cart");
         Button back = new Button("Back");
@@ -50,6 +58,8 @@ public class SingleProductPage extends BorderPane {
 
         Text cartIcon = GlyphsDude.createIcon(FontAwesomeIcon.SHOPPING_CART , "15px");
         Text backIcon = GlyphsDude.createIcon(FontAwesomeIcon.ARROW_LEFT , "15px");
+        addToCart.setTextFill(Color.WHITE);
+        back.setTextFill(Color.WHITE);
         addToCart.setGraphic(cartIcon);
         back.setGraphic(backIcon);
 
@@ -69,19 +79,55 @@ public class SingleProductPage extends BorderPane {
         vBox.setSpacing(10);
 
 
+
+        List<ReviewBox> reviewBoxes  = new ArrayList<>();
+        for (Review review : reviews) {
+            reviewBoxes.add(new ReviewBox(review));
+        }
+
+
         hBox.getChildren().addAll(imageViewWithSpinner,vBox);
         hBox.setSpacing(10);
 
         hBox.setAlignment(Pos.CENTER);
         hBox.setPadding(new Insets(10));
-        this.setCenter(hBox);
+
+        root.getChildren().add(hBox);
+        root.getChildren().addAll(reviewBoxes);
+        root.setSpacing(15);
+        root.setAlignment(Pos.CENTER);
+        ScrollPane scrollPane = new ScrollPane(root);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setBackground(Background.EMPTY);
+        scrollPane.setFitToHeight(true);
+        root.getStyleClass().add("darkPrimaryBack");
+        this.setCenter(scrollPane);
+
+        HBox commentBox = new HBox();
+        commentBox.setSpacing(15);
+        Button send = new Button();
+        Text icon = GlyphsDude.createIcon(FontAwesomeIcon.SEND , "15px");
+        icon.setFill(Color.WHITE);
+        send.setGraphic(icon);
 
         TextField comment = new TextField();
         comment.setPromptText("Comment.....");
         comment.getStyleClass().add("darkAccent");
-        comment.setAlignment(Pos.CENTER);
+        commentBox.getChildren().addAll(comment, send);
+        commentBox.setAlignment(Pos.CENTER);
+        commentBox.setPadding(new Insets(20));
+        send.getStyleClass().add("sendBTN");
 
-        this.setBottom(comment);
+        comment.setOnMouseClicked(e -> {
+            send.setDefaultButton(true);
+        });
+        send.setOnAction(e -> {
+            ReviewService.sendReview(comment.getText() , product);
+            comment.setText("");
+        });
+
+
+        this.setBottom(commentBox);
 
     }
 }

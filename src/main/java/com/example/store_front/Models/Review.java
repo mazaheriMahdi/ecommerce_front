@@ -13,4 +13,6 @@ import lombok.Setter;
 public class Review {
     String content;
     String userName;
+
 }
+

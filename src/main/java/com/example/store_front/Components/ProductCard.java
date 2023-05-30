@@ -43,7 +43,7 @@ public class ProductCard extends VBox {
 
         this.price = new Text(product.getPrice() + "$");
         this.price.setFill(Color.WHITE);
-        this.price.setFont(Font.font(Font.getFamilies().get(5), FontWeight.BOLD, 14));
+        this.price.setFont(Font.font(Font.getFamilies().get(6), FontWeight.BOLD, 14));
 
 
         HBox hBox = new HBox();

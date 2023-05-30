@@ -1,20 +1,20 @@
 package com.example.store_front.Router;
 
-import com.example.store_front.Components.ProductCard;
 import com.example.store_front.Models.Product;
 import com.example.store_front.Page.MainPage;
 import com.example.store_front.Page.SingleProductPage;
+import com.example.store_front.Service.Review.ReviewService;
 import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Router {
-    static Stage stage;
     static double screenHeight;
     static double screenWeight;
     static List<RoutEvent> listener;
@@ -27,13 +27,8 @@ public class Router {
         screenWeight = Screen.getPrimary().getBounds().getWidth() - 50;
         listener = new ArrayList<>();
         pages = new ArrayList<>();
+
     }
-
-    public static void setStage(Stage stage) {
-        Router.stage = stage;
-    }
-
-
 
 
 
@@ -43,20 +38,31 @@ public class Router {
         }
     }
 
-    public static void toProductPage(Product product){
+    public static void toProductPage(Product product) {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                Scene scene = new Scene(new SingleProductPage(product) , screenWeight , screenHeight);
-                stage.setScene(scene);
-                stage.show();
+
+                Scene scene = null;
+                try {
+                    scene = new Scene(new SingleProductPage(product, ReviewService.getReviews(product.getId())), screenWeight, screenHeight);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException | InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+
+
             }
         });
     }
+
     public static void toMainPage() {
         Scene scene = new Scene(new MainPage(), screenWeight, screenHeight);
         System.out.println("running");
         scene.getStylesheets().add(Router.class.getResource("/style.css").toExternalForm());
+        Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
         runEvent();
