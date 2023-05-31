@@ -3,6 +3,7 @@ package com.example.store_front.Service.Product;
 import com.example.store_front.Models.Category;
 import com.example.store_front.Models.Product;
 import com.example.store_front.Models.ResponseModel.PagesResponseModel;
+import com.example.store_front.Service.User.UserService;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -98,7 +99,7 @@ public class ProductService {
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .GET()
                 .uri(URI.create(pageURL))
-                .header("Authorization", "9e848dfa-bb34-4b69-9e52-476a4280c7b6")
+                .header("Authorization", UserService.getAuthToken())
                 .build();
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpResponse<String> response = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());

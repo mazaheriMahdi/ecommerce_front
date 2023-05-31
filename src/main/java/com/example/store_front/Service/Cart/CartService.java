@@ -2,6 +2,7 @@ package com.example.store_front.Service.Cart;
 
 
 import com.example.store_front.Models.RequestModel.AddToCartRequestModel;
+import com.example.store_front.Service.User.UserService;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -32,7 +33,7 @@ public class CartService {
         httpRequest = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .uri(URI.create(CART_API_END_POINT))
-                .header("Authorization", "9e848dfa-bb34-4b69-9e52-476a4280c7b6")
+                .header("Authorization", UserService.getAuthToken())
                 .build();
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpResponse<String> response = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());

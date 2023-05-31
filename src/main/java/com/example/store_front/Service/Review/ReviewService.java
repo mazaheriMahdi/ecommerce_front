@@ -2,6 +2,7 @@ package com.example.store_front.Service.Review;
 
 import com.example.store_front.Models.Product;
 import com.example.store_front.Models.Review;
+import com.example.store_front.Service.User.UserService;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -39,7 +40,7 @@ public class ReviewService {
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .uri(URI.create(PRODUCT_API_END_POINT + "/" + product.getId() + "/review" + "?" + "content=" + content))
                 .header("Content-Type", "application/json")
-                .header("Authorization", "9e848dfa-bb34-4b69-9e52-476a4280c7b6")
+                .header("Authorization", UserService.getAuthToken())
                 .GET()
                 .build();
 

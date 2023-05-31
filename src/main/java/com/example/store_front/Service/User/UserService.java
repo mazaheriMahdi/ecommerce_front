@@ -33,6 +33,7 @@ public class UserService {
     }
 
     private static List<UserLogInEvent> listener;
+
     public static void addOnUserLoginListener(UserLogInEvent event) {
         listener.add(event);
     }
@@ -51,7 +52,10 @@ public class UserService {
 
     public static String getAuthToken() {
         if (authToken == null) {
-            throw new LoginFailedException();
+            if (checkDataFileExistence()) {
+                readFromFile();
+
+            } else throw new LoginFailedException();
         }
         return authToken;
     }
@@ -62,8 +66,9 @@ public class UserService {
         setIsLoggedIn(true);
         runEvents();
     }
-    public static boolean checkDataFileExistence(){
-        File file = new File("dara.txt");
+
+    public static boolean checkDataFileExistence() {
+        File file = new File("data.txt");
         return file.exists();
     }
 
@@ -79,11 +84,12 @@ public class UserService {
         FileInputStream fileOutputStream = new FileInputStream("data.txt");
         ObjectInputStream objectInputStream = new ObjectInputStream(fileOutputStream);
         setAuthToken((String) objectInputStream.readObject());
+        setIsLoggedIn(true);
     }
 
 
     public static void login(String username, String password) throws IOException, InterruptedException {
-        Map<String , String> requestData = Map.of("email", username, "password", password);
+        Map<String, String> requestData = Map.of("email", username, "password", password);
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofString(new Gson().toJson(requestData)))
                 .uri(URI.create(LOGIN_API_END_POINT))
