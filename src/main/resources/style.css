@@ -40,9 +40,8 @@
     -fx-padding: 0px;
 
 
-
-
 }
+
 .darkPrimaryBack {
     -fx-background-color: #13151C;
 }
@@ -52,14 +51,15 @@
 }
 
 
-.sendBTN{
+.sendBTN {
     -fx-padding: 10px;
-
 
 
 }
 
-.commentCard{
+
+
+.commentCard {
     -fx-min-width: 400px;
     -fx-max-width: 400px;
     -fx-min-height: 50px;
@@ -70,4 +70,12 @@
     -fx-border-width: 1;
     -fx-text-fill: white;
     -fx-background-radius: 10px;
+}
+.loginPageBtn{
+    -fx-max-width: 400px;
+    -fx-min-width: 400px;
+}
+
+.errorText{
+    -fx-text-fill: red;
 }

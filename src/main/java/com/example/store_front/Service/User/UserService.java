@@ -33,6 +33,9 @@ public class UserService {
     }
 
     private static List<UserLogInEvent> listener;
+    public static void addOnUserLoginListener(UserLogInEvent event) {
+        listener.add(event);
+    }
 
     private static void runEvents() {
         for (UserLogInEvent event : listener) {
@@ -59,6 +62,10 @@ public class UserService {
         setIsLoggedIn(true);
         runEvents();
     }
+    public static boolean checkDataFileExistence(){
+        File file = new File("dara.txt");
+        return file.exists();
+    }
 
     @SneakyThrows
     public static void saveToFile(String token) {
@@ -76,17 +83,20 @@ public class UserService {
 
 
     public static void login(String username, String password) throws IOException, InterruptedException {
+        Map<String , String> requestData = Map.of("email", username, "password", password);
         HttpRequest httpRequest = HttpRequest.newBuilder()
-                .POST(HttpRequest.BodyPublishers.ofString("{ \"email\":" + username + ", \"password\":" + password + "}"))
+                .POST(HttpRequest.BodyPublishers.ofString(new Gson().toJson(requestData)))
                 .uri(URI.create(LOGIN_API_END_POINT))
+                .header("Content-Type", "application/json")
                 .build();
-
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpResponse<String> httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+
         Map<String, String> data = new Gson().fromJson(httpResponse.body(), new TypeToken<Map<String, String>>() {
         }.getType());
         if (httpResponse.statusCode() != 200) {
             throw new LoginFailedException();
         } else setAuthToken(data.get("token"));
+
     }
 }

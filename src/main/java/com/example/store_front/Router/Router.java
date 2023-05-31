@@ -1,12 +1,14 @@
 package com.example.store_front.Router;
 
 import com.example.store_front.Models.Product;
+import com.example.store_front.Page.LoginPage;
 import com.example.store_front.Page.MainPage;
 import com.example.store_front.Page.SingleProductPage;
 import com.example.store_front.Service.Review.ReviewService;
 import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -57,7 +59,12 @@ public class Router {
             }
         });
     }
-
+    public static void toLoginPage(){
+        Stage stage = new Stage();
+        stage.setScene(new Scene(new LoginPage(), screenWeight, screenHeight));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+    }
     public static void toMainPage() {
         Scene scene = new Scene(new MainPage(), screenWeight, screenHeight);
         System.out.println("running");
