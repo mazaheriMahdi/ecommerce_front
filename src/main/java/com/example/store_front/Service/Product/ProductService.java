@@ -32,6 +32,7 @@ public class ProductService {
         }
     }
 
+
     static public List<Product> parsProducts(String response) {
         Map<String, Object> data = new Gson().fromJson(response, new TypeToken<Map<String, Object>>() {
         }.getType());
@@ -91,6 +92,10 @@ public class ProductService {
 
     static public List<Product> last() throws IOException, InterruptedException {
         return getProducts(PagesResponseModel.Last.href);
+    }
+
+    static public List<Product> search(String query) throws IOException, InterruptedException {
+        return getProducts(PRODUCT_API_END_POINT + "?search=" + query);
     }
 
 

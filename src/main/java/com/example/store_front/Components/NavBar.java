@@ -23,6 +23,29 @@ import de.jensd.fx.glyphs.GlyphsDude;
 
 
 public class NavBar  extends HBox {
+
+    //TODO : add search functionality
+    //TODO : add login functionality
+    //TODO : add sign in functionality
+    //TODO : add Cart btn
+    //TODO : update profile info when user log in
+    //TODO : add profile btn
+    //TODO : add profile page
+    //TODO : add profile page functionality
+    //TODO : add sorting and filtering
+
+
+    private static TextField textField = new TextField();
+
+    public static TextField getTextField() {
+        return textField;
+    }
+
+    static {
+        textField.setPromptText("Search ... ");
+        textField.setFocusTraversable(false);
+    }
+
     public NavBar() {
         super();
         this.setHeight(80);
@@ -32,9 +55,6 @@ public class NavBar  extends HBox {
         this.setAlignment(Pos.CENTER);
         this.setSpacing(20);
 
-        TextField textField = new TextField();
-        textField.setPromptText("Search ... ");
-        textField.setFocusTraversable(false);
         HBox search = new HBox();
         Text icon = GlyphsDude.createIcon(FontAwesomeIcon.SEARCH , "15px" );
         icon.setFill(Color.WHITE);

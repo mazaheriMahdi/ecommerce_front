@@ -16,16 +16,31 @@ public class ProductContainer extends FlowPane {
     private final ProductService productService = new ProductService();
     private final ProgressBar progressBar = new ProgressBar();
 
+
+
     public ProductContainer() {
         super();
         this.getChildren().add(progressBar);
         this.setAlignment(Pos.CENTER);
         this.getStyleClass().add("darkPrimaryBack");
         this.firstPage();
+        handleSearch();
     }
 
     public void clear() {
         this.getChildren().clear();
+    }
+
+
+    public void handleSearch(){
+        NavBar.getTextField().textProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                System.out.println(newValue);
+                initial(ProductService.search(newValue));
+            } catch (IOException | InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
 
