@@ -24,6 +24,16 @@ public class ProductCard extends VBox {
     private Text name;
     private Text price;
 
+    private boolean isHovered=false;
+
+    public boolean isHovered() {
+        return isHovered;
+    }
+
+    public void setHovered(boolean hovered) {
+        isHovered = hovered;
+    }
+
     public ProductCard(Product product) {
         super();
         this.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
