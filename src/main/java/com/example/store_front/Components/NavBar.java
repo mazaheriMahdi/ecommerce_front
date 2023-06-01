@@ -1,6 +1,7 @@
 package com.example.store_front.Components;
 
 
+import com.example.store_front.Models.User;
 import com.example.store_front.Router.Router;
 import com.example.store_front.Service.User.UserService;
 import com.fasterxml.jackson.databind.util.BeanUtil;
@@ -24,8 +25,7 @@ import de.jensd.fx.glyphs.GlyphsDude;
 
 public class NavBar  extends HBox {
 
-    //TODO : add search functionality
-    //TODO : add login functionality
+
     //TODO : add sign in functionality
     //TODO : add Cart btn
     //TODO : update profile info when user log in
@@ -35,16 +35,13 @@ public class NavBar  extends HBox {
     //TODO : add sorting and filtering
 
 
-    private static TextField textField = new TextField();
+    private static TextField textField ;
 
     public static TextField getTextField() {
         return textField;
     }
 
-    static {
-        textField.setPromptText("Search ... ");
-        textField.setFocusTraversable(false);
-    }
+
 
     public NavBar() {
         super();
@@ -55,6 +52,18 @@ public class NavBar  extends HBox {
         this.setAlignment(Pos.CENTER);
         this.setSpacing(20);
 
+        this.init();
+        UserService.addOnUserLoginListener(this::init);
+
+    }
+
+    private void init(){
+        this.getChildren().clear();
+        textField = new TextField();
+        textField.setPromptText("Search ... ");
+        textField.setFocusTraversable(false);
+
+
         HBox search = new HBox();
         Text icon = GlyphsDude.createIcon(FontAwesomeIcon.SEARCH , "15px" );
         icon.setFill(Color.WHITE);
@@ -63,6 +72,7 @@ public class NavBar  extends HBox {
         search.setSpacing(10);
         search.setAlignment(Pos.CENTER_LEFT);
         search.getStyleClass().add("textField");
+
 
         Button loginBtn = new Button("Login");
         Button signIn = new Button("Sign in");
@@ -73,13 +83,14 @@ public class NavBar  extends HBox {
         if(UserService.getIsLoggedIn())this.getChildren().add(profileBox());
         else this.getChildren().addAll(loginBtn  , signIn);
         this.getChildren().add(search);
+
     }
 
     private HBox profileBox(){
         HBox hBox  = new HBox();
         Circle circle = new Circle(25);
         circle.maxHeight(50);
-        Image image = new Image("https://img.netzwelt.de/dw1200_dh900_sw2248_sh1686_sx2_sy581_sr4x3_nu2/picture/original/2022/05/avatar-the-way-of-water-339746.jpg" , true);
+        Image image = new Image(UserService.getCurrentUser().getAvatarUrl(), true);
         image.progressProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.doubleValue() == 1.0) {
                 ImagePattern imagePattern = new ImagePattern(image);
@@ -90,8 +101,8 @@ public class NavBar  extends HBox {
         });
 
         VBox vBox= new VBox();
-        Text first_name = new Text("Mahdi mazaheri");
-        Text credit = new Text("19$");
+        Text first_name = new Text(UserService.getCurrentUser().getName());
+        Text credit = new Text(UserService.getCurrentUser().getCredit() + "$");
         credit.setFont(Font.font(Font.getFamilies().get(6) , FontWeight.LIGHT , 13));
         credit.setFill(Color.WHITE);
 
@@ -100,7 +111,7 @@ public class NavBar  extends HBox {
 
         vBox.getChildren().addAll(first_name , credit);
         vBox.setAlignment(Pos.CENTER_LEFT);
-
+        hBox.setAlignment(Pos.CENTER);
         hBox.getChildren().addAll(circle , vBox);
         return hBox;
     }

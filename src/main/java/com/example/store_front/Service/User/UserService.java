@@ -1,6 +1,7 @@
 package com.example.store_front.Service.User;
 
 import com.example.store_front.Exception.LoginFailedException;
+import com.example.store_front.Models.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import lombok.SneakyThrows;
@@ -19,6 +20,7 @@ import static com.example.store_front.Constant.LOGIN_API_END_POINT;
 public class UserService {
 
     private static Boolean isLoggedIn;
+    private static User currentUser;
 
     static {
         isLoggedIn = false;
@@ -64,6 +66,7 @@ public class UserService {
         UserService.authToken = authToken;
         saveToFile(authToken);
         setIsLoggedIn(true);
+        setCurrentUser();
         runEvents();
     }
 
@@ -104,5 +107,26 @@ public class UserService {
             throw new LoginFailedException();
         } else setAuthToken(data.get("token"));
 
+    }
+
+    public static void setCurrentUser(){
+        HttpRequest httpRequest = HttpRequest.newBuilder()
+                .GET()
+                .uri(URI.create("http://localhost:8080/profile"))
+                .header("Content-Type", "application/json")
+                .header("Authorization", getAuthToken())
+                .build();
+        HttpClient httpClient = HttpClient.newHttpClient();
+        HttpResponse<String> httpResponse = null;
+        try {
+            httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        currentUser = new Gson().fromJson(httpResponse.body(), User.class);
+    }
+
+    public static User getCurrentUser() {
+        return currentUser;
     }
 }
