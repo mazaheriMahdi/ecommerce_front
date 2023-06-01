@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -21,6 +22,9 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.GlyphsDude;
+import javafx.scene.text.TextAlignment;
+
+import static com.example.store_front.Constant.FONT_NAME;
 
 
 public class NavBar  extends HBox {
@@ -83,6 +87,9 @@ public class NavBar  extends HBox {
         if(UserService.getIsLoggedIn())this.getChildren().add(profileBox());
         else this.getChildren().addAll(loginBtn  , signIn);
         this.getChildren().add(search);
+        if (UserService.getIsLoggedIn()) {
+            this.getChildren().add(cartBtn());
+        }
 
     }
 
@@ -103,16 +110,57 @@ public class NavBar  extends HBox {
         VBox vBox= new VBox();
         Text first_name = new Text(UserService.getCurrentUser().getName());
         Text credit = new Text(UserService.getCurrentUser().getCredit() + "$");
-        credit.setFont(Font.font(Font.getFamilies().get(6) , FontWeight.LIGHT , 13));
+        credit.setFont(Font.font("Microsoft Sans Serif" , FontWeight.BLACK , 13));
         credit.setFill(Color.WHITE);
 
         first_name.setFill(Color.WHITE);
-        first_name.setFont(Font.font(Font.getFamilies().get(2) , FontWeight.BLACK , 14));
+        first_name.setFont(Font.font("Microsoft Sans Serif" , FontWeight.LIGHT , 20));
 
         vBox.getChildren().addAll(first_name , credit);
         vBox.setAlignment(Pos.CENTER_LEFT);
         hBox.setAlignment(Pos.CENTER);
         hBox.getChildren().addAll(circle , vBox);
+
+        hBox.setSpacing(15);
         return hBox;
+    }
+
+    public StackPane cartBtn(){
+        StackPane stackPane = new StackPane();
+        Button button = new Button();
+        Text text = GlyphsDude.createIcon(FontAwesomeIcon.SHOPPING_CART , "20px");
+        text.setFill(Color.WHITE);
+        button.setGraphic(text);
+        stackPane.setPrefSize(50 , 50);
+        stackPane.setMaxHeight(50);
+        stackPane.getChildren().add(button);
+
+
+
+        StackPane countBox = new StackPane();
+        Text count = new Text("2");
+        count.setFont(Font.font("Poppins" , FontWeight.BLACK , 14));
+        for(String name  : Font.getFamilies()){
+            System.out.println(name);
+        }
+        count.setFill(Color.WHITE);
+        count.setOpacity(0.8);
+
+        count.setTextAlignment(TextAlignment.CENTER);
+        Circle circle = new Circle(7);
+        circle.setFill(Color.RED);
+        countBox.setAlignment(Pos.CENTER);
+        countBox.setPrefSize(20 , 20);
+
+        VBox countBoxVBox = new VBox(countBox);
+        countBoxVBox.setAlignment(Pos.TOP_RIGHT);
+
+        countBox.getChildren().addAll(circle , count );
+        stackPane.getChildren().add(countBoxVBox);
+        stackPane.setAlignment(Pos.CENTER_LEFT);
+
+
+
+        return stackPane;
     }
 }
