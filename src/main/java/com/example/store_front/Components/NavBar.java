@@ -107,15 +107,24 @@ public class NavBar extends HBox {
             }
         });
 
-        VBox vBox = new VBox();
+
         Text first_name = new Text(UserService.getCurrentUser().getName());
+        first_name.setFill(Color.WHITE);
+        first_name.setFont(Font.font("Microsoft Sans Serif", FontWeight.LIGHT, 20));
+
+
         Text credit = new Text(UserService.getCurrentUser().getCredit() + "$");
         credit.setFont(Font.font("Microsoft Sans Serif", FontWeight.BLACK, 13));
         credit.setFill(Color.WHITE);
 
-        first_name.setFill(Color.WHITE);
-        first_name.setFont(Font.font("Microsoft Sans Serif", FontWeight.LIGHT, 20));
 
+        //update credit
+        OrderService.addOrderCreatedEventListener(() -> {
+            credit.setText(UserService.getCurrentUser().getCredit() + "$");
+        });
+
+
+        VBox vBox = new VBox();
         vBox.getChildren().addAll(first_name, credit);
         vBox.setAlignment(Pos.CENTER_LEFT);
         hBox.setAlignment(Pos.CENTER);
@@ -126,11 +135,14 @@ public class NavBar extends HBox {
     }
 
     public StackPane cartBtn() throws IOException, InterruptedException {
-        StackPane stackPane = new StackPane();
-        Button button = new Button();
         Text text = GlyphsDude.createIcon(FontAwesomeIcon.SHOPPING_CART, "20px");
         text.setFill(Color.WHITE);
+
+
+        Button button = new Button();
         button.setGraphic(text);
+
+        StackPane stackPane = new StackPane();
         stackPane.setPrefSize(50, 50);
         stackPane.setMaxHeight(50);
         stackPane.getChildren().add(button);
@@ -142,40 +154,40 @@ public class NavBar extends HBox {
         Text count = new Text(CartService.getCartItemsCount() + "");
 
 
-        OrderService.addOrderCreatedEventListener(()->{
+        OrderService.addOrderCreatedEventListener(() -> {
             count.setText(CartService.getCartItemsCount() + "");
         });
-        OrderService.addCreditNotEnoughEventListener(()->{
+        OrderService.addCreditNotEnoughEventListener(() -> {
             count.setText(CartService.getCartItemsCount() + "");
         });
-        CartService.addListener(()->{
+        CartService.addListener(() -> {
             count.setText(CartService.getCartItemsCount() + "");
         });
 
 
-        count.setFont(Font.font("Poppins",FontWeight.BLACK,14));
+        count.setFont(Font.font("Poppins", FontWeight.BLACK, 14));
 
         count.setFill(Color.WHITE);
         count.setOpacity(0.8);
 
         count.setTextAlignment(TextAlignment.CENTER);
-    Circle circle = new Circle(7);
+        Circle circle = new Circle(7);
         circle.setFill(Color.RED);
         countBox.setAlignment(Pos.CENTER);
-        countBox.setPrefSize(20,20);
+        countBox.setPrefSize(20, 20);
 
-    VBox countBoxVBox = new VBox(countBox);
+        VBox countBoxVBox = new VBox(countBox);
         countBoxVBox.setAlignment(Pos.TOP_RIGHT);
 
         countBox.getChildren().
 
-    addAll(circle, count);
+                addAll(circle, count);
         stackPane.getChildren().
 
-    add(countBoxVBox);
+                add(countBoxVBox);
         stackPane.setAlignment(Pos.CENTER_LEFT);
 
-        stackPane.setOnMouseClicked(mouseEvent ->Router.toCartPage());
+        stackPane.setOnMouseClicked(mouseEvent -> Router.toCartPage());
         return stackPane;
-}
+    }
 }

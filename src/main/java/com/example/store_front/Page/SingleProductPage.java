@@ -1,10 +1,13 @@
 package com.example.store_front.Page;
 
+import com.example.store_front.Components.CustomAlert;
 import com.example.store_front.Components.ImageViewWithSpinner;
 import com.example.store_front.Components.NavBar;
 import com.example.store_front.Components.ReviewBox;
+import com.example.store_front.Exception.LoginFailedException;
 import com.example.store_front.Models.Product;
 import com.example.store_front.Models.Review;
+import com.example.store_front.Router.Router;
 import com.example.store_front.Service.Cart.CartService;
 import com.example.store_front.Service.Review.ReviewService;
 import de.jensd.fx.glyphs.GlyphsDude;
@@ -14,14 +17,11 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SingleProductPage extends BorderPane {
-    public SingleProductPage(Product product , List<Review> reviews) {
+    public SingleProductPage(Product product, List<Review> reviews) {
         super();
 
         this.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
@@ -50,14 +50,17 @@ public class SingleProductPage extends BorderPane {
 
         addToCart.setOnMouseClicked(e -> {
             try {
-                CartService.addToCart(product.getId() , 1);
+                CartService.addToCart(product.getId(), 1);
             } catch (IOException | InterruptedException ex) {
                 throw new RuntimeException(ex);
+            } catch (LoginFailedException loginFailedException) {
+                CustomAlert customAlert = new CustomAlert("You have to login \nyou will be redirect to login page.");
+                Router.toLoginPage();
+                customAlert.show();
             }
         });
-
-        Text cartIcon = GlyphsDude.createIcon(FontAwesomeIcon.SHOPPING_CART , "15px");
-        Text backIcon = GlyphsDude.createIcon(FontAwesomeIcon.ARROW_LEFT , "15px");
+        Text cartIcon = GlyphsDude.createIcon(FontAwesomeIcon.SHOPPING_CART, "15px");
+        Text backIcon = GlyphsDude.createIcon(FontAwesomeIcon.ARROW_LEFT, "15px");
         addToCart.setTextFill(Color.WHITE);
         back.setTextFill(Color.WHITE);
         addToCart.setGraphic(cartIcon);
@@ -66,27 +69,26 @@ public class SingleProductPage extends BorderPane {
 
         Text prName = new Text(product.getName());
         prName.setFill(Color.WHITE);
-        prName.setFont(Font.font("Arial" , FontWeight.BLACK, 40));
+        prName.setFont(Font.font("Arial", FontWeight.BLACK, 40));
 
 
         Text prPrice = new Text(product.getPrice() + "$");
         prPrice.setFill(Color.WHITE);
-        prPrice.setFont(Font.font("Arial" , FontWeight.BOLD, 20));
+        prPrice.setFont(Font.font("Arial", FontWeight.BOLD, 20));
 
 
-        vBox.getChildren().addAll(prName , prPrice , addToCart , back);
+        vBox.getChildren().addAll(prName, prPrice, addToCart, back);
         vBox.setAlignment(Pos.CENTER);
         vBox.setSpacing(10);
 
 
-
-        List<ReviewBox> reviewBoxes  = new ArrayList<>();
+        List<ReviewBox> reviewBoxes = new ArrayList<>();
         for (Review review : reviews) {
             reviewBoxes.add(new ReviewBox(review));
         }
 
 
-        hBox.getChildren().addAll(imageViewWithSpinner,vBox);
+        hBox.getChildren().addAll(imageViewWithSpinner, vBox);
         hBox.setSpacing(10);
 
         hBox.setAlignment(Pos.CENTER);
@@ -106,7 +108,7 @@ public class SingleProductPage extends BorderPane {
         HBox commentBox = new HBox();
         commentBox.setSpacing(15);
         Button send = new Button();
-        Text icon = GlyphsDude.createIcon(FontAwesomeIcon.SEND , "15px");
+        Text icon = GlyphsDude.createIcon(FontAwesomeIcon.SEND, "15px");
         icon.setFill(Color.WHITE);
         send.setGraphic(icon);
 
@@ -122,8 +124,15 @@ public class SingleProductPage extends BorderPane {
             send.setDefaultButton(true);
         });
         send.setOnAction(e -> {
-            ReviewService.sendReview(comment.getText() , product);
-            comment.setText("");
+
+            try {
+                ReviewService.sendReview(comment.getText(), product);
+                comment.setText("");
+            }catch (LoginFailedException loginFailedException){
+                CustomAlert customAlert = new CustomAlert("You have to login \nyou will be redirect to login page.");
+                Router.toLoginPage();
+                customAlert.show();
+            }
         });
 
 

@@ -104,7 +104,6 @@ public class ProductService {
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .GET()
                 .uri(URI.create(pageURL))
-                .header("Authorization", UserService.getAuthToken())
                 .build();
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpResponse<String> response = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());

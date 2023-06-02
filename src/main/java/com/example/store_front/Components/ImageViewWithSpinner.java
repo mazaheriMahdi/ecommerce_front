@@ -24,17 +24,13 @@ public class ImageViewWithSpinner extends VBox {
 
         Image image = new Image(url, true);
 
-
             ImageView imageView = new ImageView();
             imageView.getStyleClass().add("roundedBG");
             this.setAlignment(Pos.CENTER);
             this.getChildren().add(progressBar);
-
-
             image.progressProperty().addListener((observable, oldValue, newValue) -> {
                         if (newValue.doubleValue() == 1.0) {
                             try {
-
                                 if (image != null){
                                     ImagePattern imagePattern = new ImagePattern(image, 0, 0, 1, 1, true);
                                     Rectangle rectangle = new Rectangle(width, height);
@@ -47,17 +43,11 @@ public class ImageViewWithSpinner extends VBox {
                                 }
                             }catch (Exception e){
                                 this.getChildren().clear();
-                                Text text = new Text("Broken Image");
                                 Text icon = GlyphsDude.createIcon(FontAwesomeIcon.EXCLAMATION_TRIANGLE, "1.5em");
                                 this.getChildren().add(icon);
                             }
                         }
                     }
             );
-
-
-
-
     }
-
 }

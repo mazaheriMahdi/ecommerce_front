@@ -6,6 +6,7 @@ import com.example.store_front.Page.LoginPage;
 import com.example.store_front.Page.MainPage;
 import com.example.store_front.Page.SingleProductPage;
 import com.example.store_front.Service.Cart.CartService;
+import com.example.store_front.Service.Order.OrderService;
 import com.example.store_front.Service.Review.ReviewService;
 import javafx.application.Platform;
 import javafx.scene.Node;
@@ -16,6 +17,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.lang.invoke.LambdaMetafactory;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,7 +77,23 @@ public class Router {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(new CartPage(CartService.getCart()), 500, 500));
             stage.show();
+
             CartService.addOnCartItemDeleteListener(()->{
+                try {
+                    stage.setScene(new Scene(new CartPage(CartService.getCart()), 500, 500));
+                } catch (IOException | InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+
+            OrderService.addOrderCreatedEventListener(()->{
+                try {
+                    stage.setScene(new Scene(new CartPage(CartService.getCart()), 500, 500));
+                } catch (IOException | InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            OrderService.addCreditNotEnoughEventListener(()->{
                 try {
                     stage.setScene(new Scene(new CartPage(CartService.getCart()), 500, 500));
                 } catch (IOException | InterruptedException e) {
