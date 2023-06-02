@@ -28,12 +28,6 @@ import java.io.IOException;
 public class NavBar extends HBox {
 
 
-    //TODO : add sign in functionality
-    //TODO : add Cart btn
-    //TODO : update profile info when user log in
-    //TODO : add profile btn
-    //TODO : add profile page
-    //TODO : add profile page functionality
     //TODO : add sorting and filtering
 
 

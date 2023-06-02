@@ -88,3 +88,8 @@
     -fx-text-fill: white;
     -fx-background-radius: 20px;
 }
+
+.roundedBG{
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
