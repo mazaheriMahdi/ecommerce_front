@@ -1,6 +1,7 @@
 package com.example.store_front.Components;
 
 import com.example.store_front.Models.cart.CartItem;
+import com.example.store_front.Service.Cart.CartService;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.geometry.Pos;
@@ -11,6 +12,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+
+import java.io.IOException;
 
 public class CartItemCart extends HBox {
     public CartItemCart(CartItem cartItem) {
@@ -40,6 +43,16 @@ public class CartItemCart extends HBox {
         imageAndNameBox.setSpacing(15);
         imageAndNameBox.getChildren().addAll(image , vBox);
         this.getChildren().addAll(imageAndNameBox, remove);
+
+
+
+        remove.setOnMouseClicked(event -> {
+            try {
+                CartService.deleteCartItem(cartItem);
+            } catch (IOException | InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
 }

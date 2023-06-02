@@ -3,6 +3,7 @@ package com.example.store_front.Service.Cart;
 
 import com.example.store_front.Models.RequestModel.AddToCartRequestModel;
 import com.example.store_front.Models.cart.Cart;
+import com.example.store_front.Models.cart.CartItem;
 import com.example.store_front.Service.User.UserService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -22,11 +23,13 @@ import static com.example.store_front.Constant.CART_API_END_POINT;
 
 public class CartService {
     public static List<AddToCartEvent> listeners;
+    public static List<OnCartItemRemoveEvent> onCartItemRemoveEventListeners;
     private static Cart currentCart;
     private static String cartId;
 
     static {
         listeners = new ArrayList<>();
+        onCartItemRemoveEventListeners = new ArrayList<>();
     }
 
     public CartService() {
@@ -97,6 +100,25 @@ public class CartService {
         for (AddToCartEvent listener : listeners) {
             listener.onAddToCart();
         }
+    }
+
+    public static void deleteCartItem(CartItem cartItem) throws IOException, InterruptedException {
+        HttpRequest request = HttpRequest.newBuilder()
+                .DELETE()
+                .uri(URI.create(CART_API_END_POINT + "/" + getCartId() + "/items/" + cartItem.getProduct().getId()))
+                .header("Authorization", UserService.getAuthToken())
+                .header("Content-Type", "application/json")
+                .build();
+        HttpClient httpClient = HttpClient.newHttpClient();
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.body());
+        for (OnCartItemRemoveEvent listener : onCartItemRemoveEventListeners) {
+            listener.onCartItemRemove();
+        }
+    }
+
+    public static void addOnCartItemDeleteListener(OnCartItemRemoveEvent listener) {
+        onCartItemRemoveEventListeners.add(listener);
     }
 
     public static void addListener(AddToCartEvent listener) {

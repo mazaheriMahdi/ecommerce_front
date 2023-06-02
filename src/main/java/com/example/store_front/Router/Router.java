@@ -75,6 +75,13 @@ public class Router {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(new CartPage(CartService.getCart()), 500, 500));
             stage.show();
+            CartService.addOnCartItemDeleteListener(()->{
+                try {
+                    stage.setScene(new Scene(new CartPage(CartService.getCart()), 500, 500));
+                } catch (IOException | InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            });
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
