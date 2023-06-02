@@ -29,7 +29,6 @@ public class ImageViewWithSpinner extends VBox {
                 imageView.setFitHeight(height);
                 this.getChildren().clear();
                 this.getChildren().add(imageView);
-                System.out.println("done");
             }
         }
         );

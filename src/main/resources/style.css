@@ -79,3 +79,12 @@
 .errorText{
     -fx-text-fill: red;
 }
+.cartItem{
+    -fx-min-width: 400px;
+    -fx-max-width: 400px;
+    -fx-max-height: 100px;
+    -fx-min-height: 100px;
+    -fx-background-color: #1B222C;
+    -fx-text-fill: white;
+    -fx-background-radius: 20px;
+}

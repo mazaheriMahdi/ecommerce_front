@@ -15,4 +15,6 @@ module com.example.store_front {
     opens com.example.store_front.Components to javafx.fxml;
     opens com.example.store_front.Models to com.google.gson;
     opens com.example.store_front.Models.RequestModel to com.google.gson;
+    opens com.example.store_front.Service.Cart to com.google.gson;
+    opens com.example.store_front.Models.cart to com.google.gson;
 }

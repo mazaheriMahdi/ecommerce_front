@@ -1,17 +1,16 @@
 package com.example.store_front.Components;
 
 
-import com.example.store_front.Models.User;
 import com.example.store_front.Router.Router;
+import com.example.store_front.Service.Cart.CartService;
 import com.example.store_front.Service.User.UserService;
-import com.fasterxml.jackson.databind.util.BeanUtil;
+import de.jensd.fx.glyphs.GlyphsDude;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -20,14 +19,12 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
-import de.jensd.fx.glyphs.GlyphsDude;
 import javafx.scene.text.TextAlignment;
 
-import static com.example.store_front.Constant.FONT_NAME;
+import java.io.IOException;
 
 
-public class NavBar  extends HBox {
+public class NavBar extends HBox {
 
 
     //TODO : add sign in functionality
@@ -39,12 +36,11 @@ public class NavBar  extends HBox {
     //TODO : add sorting and filtering
 
 
-    private static TextField textField ;
+    private static TextField textField;
 
     public static TextField getTextField() {
         return textField;
     }
-
 
 
     public NavBar() {
@@ -61,7 +57,7 @@ public class NavBar  extends HBox {
 
     }
 
-    private void init(){
+    private void init() {
         this.getChildren().clear();
         textField = new TextField();
         textField.setPromptText("Search ... ");
@@ -69,10 +65,10 @@ public class NavBar  extends HBox {
 
 
         HBox search = new HBox();
-        Text icon = GlyphsDude.createIcon(FontAwesomeIcon.SEARCH , "15px" );
+        Text icon = GlyphsDude.createIcon(FontAwesomeIcon.SEARCH, "15px");
         icon.setFill(Color.WHITE);
         icon.setOpacity(0.8);
-        search.getChildren().addAll(icon , textField);
+        search.getChildren().addAll(icon, textField);
         search.setSpacing(10);
         search.setAlignment(Pos.CENTER_LEFT);
         search.getStyleClass().add("textField");
@@ -84,8 +80,8 @@ public class NavBar  extends HBox {
         loginBtn.setOnMouseClicked(event -> {
             Router.toLoginPage();
         });
-        if(UserService.getIsLoggedIn())this.getChildren().add(profileBox());
-        else this.getChildren().addAll(loginBtn  , signIn);
+        if (UserService.getIsLoggedIn()) this.getChildren().add(profileBox());
+        else this.getChildren().addAll(loginBtn, signIn);
         this.getChildren().add(search);
         if (UserService.getIsLoggedIn()) {
             this.getChildren().add(cartBtn());
@@ -93,8 +89,8 @@ public class NavBar  extends HBox {
 
     }
 
-    private HBox profileBox(){
-        HBox hBox  = new HBox();
+    private HBox profileBox() {
+        HBox hBox = new HBox();
         Circle circle = new Circle(25);
         circle.maxHeight(50);
         Image image = new Image(UserService.getCurrentUser().getAvatarUrl(), true);
@@ -102,47 +98,49 @@ public class NavBar  extends HBox {
             if (newValue.doubleValue() == 1.0) {
                 ImagePattern imagePattern = new ImagePattern(image);
                 circle.setFill(imagePattern);
-            }else {
-                System.out.println("Loading ... "+newValue.doubleValue());
+            } else {
+                System.out.println("Loading ... " + newValue.doubleValue());
             }
         });
 
-        VBox vBox= new VBox();
+        VBox vBox = new VBox();
         Text first_name = new Text(UserService.getCurrentUser().getName());
         Text credit = new Text(UserService.getCurrentUser().getCredit() + "$");
-        credit.setFont(Font.font("Microsoft Sans Serif" , FontWeight.BLACK , 13));
+        credit.setFont(Font.font("Microsoft Sans Serif", FontWeight.BLACK, 13));
         credit.setFill(Color.WHITE);
 
         first_name.setFill(Color.WHITE);
-        first_name.setFont(Font.font("Microsoft Sans Serif" , FontWeight.LIGHT , 20));
+        first_name.setFont(Font.font("Microsoft Sans Serif", FontWeight.LIGHT, 20));
 
-        vBox.getChildren().addAll(first_name , credit);
+        vBox.getChildren().addAll(first_name, credit);
         vBox.setAlignment(Pos.CENTER_LEFT);
         hBox.setAlignment(Pos.CENTER);
-        hBox.getChildren().addAll(circle , vBox);
+        hBox.getChildren().addAll(circle, vBox);
 
         hBox.setSpacing(15);
         return hBox;
     }
 
-    public StackPane cartBtn(){
+    public StackPane cartBtn() {
         StackPane stackPane = new StackPane();
         Button button = new Button();
-        Text text = GlyphsDude.createIcon(FontAwesomeIcon.SHOPPING_CART , "20px");
+        Text text = GlyphsDude.createIcon(FontAwesomeIcon.SHOPPING_CART, "20px");
         text.setFill(Color.WHITE);
         button.setGraphic(text);
-        stackPane.setPrefSize(50 , 50);
+        stackPane.setPrefSize(50, 50);
         stackPane.setMaxHeight(50);
         stackPane.getChildren().add(button);
 
 
-
         StackPane countBox = new StackPane();
-        Text count = new Text("2");
-        count.setFont(Font.font("Poppins" , FontWeight.BLACK , 14));
-        for(String name  : Font.getFamilies()){
-            System.out.println(name);
+        Text count = null;
+        try {
+            count = new Text(CartService.getCartItemsCount()+"");
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
         }
+        count.setFont(Font.font("Poppins", FontWeight.BLACK, 14));
+
         count.setFill(Color.WHITE);
         count.setOpacity(0.8);
 
@@ -150,17 +148,16 @@ public class NavBar  extends HBox {
         Circle circle = new Circle(7);
         circle.setFill(Color.RED);
         countBox.setAlignment(Pos.CENTER);
-        countBox.setPrefSize(20 , 20);
+        countBox.setPrefSize(20, 20);
 
         VBox countBoxVBox = new VBox(countBox);
         countBoxVBox.setAlignment(Pos.TOP_RIGHT);
 
-        countBox.getChildren().addAll(circle , count );
+        countBox.getChildren().addAll(circle, count);
         stackPane.getChildren().add(countBoxVBox);
         stackPane.setAlignment(Pos.CENTER_LEFT);
 
-
-
+        stackPane.setOnMouseClicked(mouseEvent -> Router.toCartPage());
         return stackPane;
     }
 }
