@@ -68,7 +68,6 @@ public class CartService {
     }
 
     public static String getCartId() throws IOException, InterruptedException {
-
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .uri(URI.create(CART_API_END_POINT))

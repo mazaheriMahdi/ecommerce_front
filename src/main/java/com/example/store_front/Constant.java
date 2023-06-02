@@ -9,4 +9,5 @@ public class Constant {
     public final static String AUTH_API_END_POINT = API_END_POINT + "auth";
     public final static String LOGIN_API_END_POINT = AUTH_API_END_POINT + "/login";
     public final static String REGISTER_API_END_POINT = AUTH_API_END_POINT + "/signIn";
+    public final static String PAYMENT_API_END_POINT = API_END_POINT + "payment";
 }

@@ -1,7 +1,7 @@
 package com.example.store_front.Page;
 
 
-import com.example.store_front.Components.CartItemCart;
+import com.example.store_front.Components.CartItemCard;
 import com.example.store_front.Models.cart.Cart;
 import com.example.store_front.Models.cart.CartItem;
 import com.example.store_front.Service.Cart.CartService;
@@ -36,7 +36,7 @@ public class CartPage extends BorderPane {
     private void init(Cart cart) {
 
         //center of the border pane
-        List<CartItemCart> cartItemCarts = new ArrayList<>();
+        List<CartItemCard> cartItemCarts = new ArrayList<>();
         VBox vBox = new VBox();
         vBox.getStyleClass().add("darkPrimaryBack");
         vBox.setAlignment(Pos.CENTER);
@@ -45,7 +45,7 @@ public class CartPage extends BorderPane {
         scrollPane.setFitToHeight(true);
         scrollPane.setFitToWidth(true);
         for (CartItem cartItem : cart.getCartItems()) {
-            cartItemCarts.add(new CartItemCart(cartItem));
+            cartItemCarts.add(new CartItemCard(cartItem));
         }
         vBox.getChildren().addAll(cartItemCarts);
         this.setCenter(scrollPane);

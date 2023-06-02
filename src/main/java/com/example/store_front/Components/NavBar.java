@@ -54,10 +54,12 @@ public class NavBar extends HBox {
         UserService.addOnUserLoginListener(() -> {
             try {
                 this.init();
+
             } catch (IOException | InterruptedException e) {
                 throw new RuntimeException(e);
             }
         });
+
 
     }
 
@@ -88,7 +90,23 @@ public class NavBar extends HBox {
         else this.getChildren().addAll(loginBtn, signIn);
         this.getChildren().add(search);
         if (UserService.getIsLoggedIn()) {
-            this.getChildren().add(cartBtn());
+            Button paymentButton = new Button();
+            Text paymentIcon = GlyphsDude.createIcon(FontAwesomeIcon.CREDIT_CARD, "20px");
+            paymentIcon.setFill(Color.WHITE);
+            paymentButton.setGraphic(paymentIcon);
+            paymentIcon.setOnMouseClicked(event -> {
+                Router.toPaymentPage();
+            });
+
+
+            Button history = new Button();
+            Text historyIcon = GlyphsDude.createIcon(FontAwesomeIcon.HISTORY, "20px");
+            historyIcon.setFill(Color.WHITE);
+            history.setGraphic(historyIcon);
+            historyIcon.setOnMouseClicked(event -> {
+
+            });
+            this.getChildren().addAll(cartBtn(), paymentButton, history);
         }
 
     }
@@ -131,6 +149,7 @@ public class NavBar extends HBox {
         hBox.getChildren().addAll(circle, vBox);
 
         hBox.setSpacing(15);
+
         return hBox;
     }
 
@@ -190,4 +209,6 @@ public class NavBar extends HBox {
         stackPane.setOnMouseClicked(mouseEvent -> Router.toCartPage());
         return stackPane;
     }
+
+
 }

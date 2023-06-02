@@ -15,8 +15,8 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-public class CartItemCart extends HBox {
-    public CartItemCart(CartItem cartItem) {
+public class CartItemCard extends HBox {
+    public CartItemCard(CartItem cartItem) {
         super();
         this.getStyleClass().add("cartItem");
         ImageViewWithSpinner image = new ImageViewWithSpinner(cartItem.getProduct().getImage() , 50 , 50);

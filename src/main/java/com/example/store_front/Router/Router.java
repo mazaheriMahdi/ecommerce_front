@@ -1,10 +1,7 @@
 package com.example.store_front.Router;
 
 import com.example.store_front.Models.Product;
-import com.example.store_front.Page.CartPage;
-import com.example.store_front.Page.LoginPage;
-import com.example.store_front.Page.MainPage;
-import com.example.store_front.Page.SingleProductPage;
+import com.example.store_front.Page.*;
 import com.example.store_front.Service.Cart.CartService;
 import com.example.store_front.Service.Order.OrderService;
 import com.example.store_front.Service.Review.ReviewService;
@@ -103,6 +100,13 @@ public class Router {
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static void toPaymentPage(){
+        Stage stage = new Stage();
+        stage.setScene(new Scene(new PaymentPage(), 450, 500));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
     }
 
 
