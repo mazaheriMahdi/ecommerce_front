@@ -4,6 +4,8 @@ package com.example.store_front.Page;
 import com.example.store_front.Components.CartItemCart;
 import com.example.store_front.Models.cart.Cart;
 import com.example.store_front.Models.cart.CartItem;
+import com.example.store_front.Service.Cart.CartService;
+import com.example.store_front.Service.Order.OrderService;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -16,6 +18,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,9 +63,18 @@ public class CartPage extends BorderPane {
         total.setFont(Font.font("Poppins", FontWeight.BLACK, 20));
         total.setFill(Color.WHITE);
         Button button = new Button("Continue Payment");
+
         hBox.getChildren().addAll(total , button);
         hBox.setPadding(new Insets(20));
         this.setBottom(hBox);
+
+        button.setOnMouseClicked(event -> {
+            try {
+                OrderService.createOrders(CartService.getCartId());
+            } catch (IOException | InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
     }
 }

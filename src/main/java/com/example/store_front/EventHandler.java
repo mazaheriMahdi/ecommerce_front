@@ -3,6 +3,7 @@ package com.example.store_front;
 import com.example.store_front.Components.CustomAlert;
 import com.example.store_front.Service.Cart.AddToCartEvent;
 import com.example.store_front.Service.Cart.CartService;
+import com.example.store_front.Service.Order.OrderService;
 import com.example.store_front.Service.Review.ReviewService;
 import com.example.store_front.Service.User.UserService;
 import javafx.scene.control.Alert;
@@ -22,5 +23,21 @@ public class EventHandler {
             CustomAlert loginAlert = new CustomAlert("Login Successful");
             loginAlert.show();
         });
+
+        OrderService.addOrderCreatedEventListener(()->{
+            CustomAlert orderAlert = new CustomAlert("Order Created");
+            orderAlert.show();
+        });
+
+        OrderService.addCreditNotEnoughEventListener(()->{
+            CustomAlert creditAlert = new CustomAlert("Credit Not Enough");
+            creditAlert.show();
+        });
+
+        OrderService.addLackOfInventoryEventListener(()->{
+            CustomAlert inventoryAlert = new CustomAlert("Lack Of Inventory");
+            inventoryAlert.show();
+        });
+
     }
 }

@@ -3,6 +3,7 @@ package com.example.store_front.Components;
 
 import com.example.store_front.Router.Router;
 import com.example.store_front.Service.Cart.CartService;
+import com.example.store_front.Service.Order.OrderService;
 import com.example.store_front.Service.User.UserService;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -51,13 +52,22 @@ public class NavBar extends HBox {
         this.getStyleClass().add("darkAccent");
         this.setAlignment(Pos.CENTER);
         this.setSpacing(20);
-
-        this.init();
-        UserService.addOnUserLoginListener(this::init);
+        try {
+            this.init();
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        UserService.addOnUserLoginListener(() -> {
+            try {
+                this.init();
+            } catch (IOException | InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
     }
 
-    private void init() {
+    private void init() throws IOException, InterruptedException {
         this.getChildren().clear();
         textField = new TextField();
         textField.setPromptText("Search ... ");
@@ -121,7 +131,7 @@ public class NavBar extends HBox {
         return hBox;
     }
 
-    public StackPane cartBtn() {
+    public StackPane cartBtn() throws IOException, InterruptedException {
         StackPane stackPane = new StackPane();
         Button button = new Button();
         Text text = GlyphsDude.createIcon(FontAwesomeIcon.SHOPPING_CART, "20px");
@@ -133,31 +143,45 @@ public class NavBar extends HBox {
 
 
         StackPane countBox = new StackPane();
-        Text count = null;
-        try {
-            count = new Text(CartService.getCartItemsCount()+"");
-        } catch (IOException | InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        count.setFont(Font.font("Poppins", FontWeight.BLACK, 14));
+
+
+        Text count = new Text(CartService.getCartItemsCount() + "");
+
+
+        OrderService.addOrderCreatedEventListener(()->{
+            count.setText(CartService.getCartItemsCount() + "");
+        });
+        OrderService.addCreditNotEnoughEventListener(()->{
+            count.setText(CartService.getCartItemsCount() + "");
+        });
+        CartService.addListener(()->{
+            count.setText(CartService.getCartItemsCount() + "");
+        });
+
+
+        count.setFont(Font.font("Poppins",FontWeight.BLACK,14));
 
         count.setFill(Color.WHITE);
         count.setOpacity(0.8);
 
         count.setTextAlignment(TextAlignment.CENTER);
-        Circle circle = new Circle(7);
+    Circle circle = new Circle(7);
         circle.setFill(Color.RED);
         countBox.setAlignment(Pos.CENTER);
-        countBox.setPrefSize(20, 20);
+        countBox.setPrefSize(20,20);
 
-        VBox countBoxVBox = new VBox(countBox);
+    VBox countBoxVBox = new VBox(countBox);
         countBoxVBox.setAlignment(Pos.TOP_RIGHT);
 
-        countBox.getChildren().addAll(circle, count);
-        stackPane.getChildren().add(countBoxVBox);
+        countBox.getChildren().
+
+    addAll(circle, count);
+        stackPane.getChildren().
+
+    add(countBoxVBox);
         stackPane.setAlignment(Pos.CENTER_LEFT);
 
-        stackPane.setOnMouseClicked(mouseEvent -> Router.toCartPage());
+        stackPane.setOnMouseClicked(mouseEvent ->Router.toCartPage());
         return stackPane;
-    }
+}
 }
