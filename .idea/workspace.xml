@@ -4,24 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e16fe36-6b60-4e8e-a01c-59f02c6b2cc4" name="Changes" comment="update .gitignore">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/ComboBoxWithLabel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/KeyValueTextFiled.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/RequestModel/CreateProductRequestModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/RequestModel/ProductRequestModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/ProductCreateTab.java" afterDir="false" />
+    <list default="true" id="4e16fe36-6b60-4e8e-a01c-59f02c6b2cc4" name="Changes" comment="add to string to product model &#10;and create admin page components">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/PropertyKeyService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/ProductContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/ProductContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/TextFieldWithLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/TextFieldWithLabel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/cardStyle.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/AdminPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/AdminPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Router/Router.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Router/Router.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Product/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Product/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/StoreApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/StoreApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/KeyValueTextFiled.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/KeyValueTextFiled.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/ProductCreateTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/ProductCreateTab.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +99,7 @@
       <workItem from="1685538320804" duration="1101000" />
       <workItem from="1685614079776" duration="15872000" />
       <workItem from="1685692715192" duration="12316000" />
-      <workItem from="1685714643844" duration="42306000" />
+      <workItem from="1685714643844" duration="44348000" />
     </task>
     <task id="LOCAL-00001" summary="add id to product">
       <created>1685199465103</created>
@@ -281,7 +269,35 @@
       <option name="project" value="LOCAL" />
       <updated>1685751864000</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="fix category class">
+      <created>1685811092850</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1685811092850</updated>
+    </task>
+    <task id="LOCAL-00026" summary="create ProductRequestModel and write logic for sending ad product to server">
+      <created>1685811192838</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1685811192838</updated>
+    </task>
+    <task id="LOCAL-00027" summary="create ProductRequestModel and write logic for sending ad product to server">
+      <created>1685811242113</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1685811242113</updated>
+    </task>
+    <task id="LOCAL-00028" summary="add to string to product model &#10;and create admin page components">
+      <created>1685811313444</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1685811313444</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,7 +325,11 @@
     <MESSAGE value="-extract standalone prodcut parser in ProductService &#10;-create ProductPropertyCard.java&#10;-fix Order Item Cad&#10; add setter , getter &amp; constructor&#10;-create HistoryPage" />
     <MESSAGE value="delete .class files" />
     <MESSAGE value="update .gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="update .gitignore" />
+    <MESSAGE value="fix category class" />
+    <MESSAGE value="add to string to product model" />
+    <MESSAGE value="create ProductRequestModel and write logic for sending ad product to server" />
+    <MESSAGE value="add to string to product model &#10;and create admin page components" />
+    <option name="LAST_COMMIT_MESSAGE" value="add to string to product model &#10;and create admin page components" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

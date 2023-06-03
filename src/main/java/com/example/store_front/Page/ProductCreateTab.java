@@ -7,6 +7,7 @@ import com.example.store_front.Models.Category;
 import com.example.store_front.Models.RequestModel.CreateProductRequestModel;
 import com.example.store_front.Models.RequestModel.ProductRequestModel;
 import com.example.store_front.Service.Product.ProductService;
+import com.example.store_front.Service.PropertyKeyService;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.geometry.Pos;
@@ -39,9 +40,18 @@ public class ProductCreateTab extends BorderPane {
     }
 
     public void addKeyValueTextFiled() {
-        KeyValueTextFiled keyValueTextFiled = new KeyValueTextFiled(new String[]{"name", "value"});
-        this.keyValueTextFiled.add(keyValueTextFiled);
-        center.getChildren().add(center.getChildren().size() - 2, keyValueTextFiled);
+        try {
+            List<Map<String , String>> list = PropertyKeyService.getAll();
+            List<String> nameList = new ArrayList<>();
+            for (Map<String, String> map : list) {
+                nameList.add(map.get("name"));
+            }
+            KeyValueTextFiled keyValueTextFiled = new KeyValueTextFiled(nameList);
+            this.keyValueTextFiled.add(keyValueTextFiled);
+            center.getChildren().add(center.getChildren().size() - 2, keyValueTextFiled);
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public ProductCreateTab() {
@@ -185,6 +195,8 @@ public class ProductCreateTab extends BorderPane {
                 this.setKeyValueTextFiled(new ArrayList<>());
                 for (String s : value) {
                     this.addKeyValueTextFiled();
+                    this.getKeyValueTextFiled().get(this.getKeyValueTextFiled().size() - 1).addKey(s);
+                    this.getKeyValueTextFiled().get(this.getKeyValueTextFiled().size() - 1).selectLast();
 //                    this.getKeyValueTextFiled().get(this.getKeyValueTextFiled().size() - 1).setKey(s);
                 }
 
