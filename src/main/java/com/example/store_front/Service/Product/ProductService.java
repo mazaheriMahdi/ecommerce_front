@@ -2,6 +2,8 @@ package com.example.store_front.Service.Product;
 
 import com.example.store_front.Models.Category;
 import com.example.store_front.Models.Product;
+import com.example.store_front.Models.RequestModel.CreateProductRequestModel;
+import com.example.store_front.Models.RequestModel.ProductRequestModel;
 import com.example.store_front.Models.ResponseModel.PagesResponseModel;
 import com.example.store_front.Service.User.UserService;
 import com.google.gson.Gson;
@@ -43,9 +45,9 @@ public class ProductService {
         }.getType());
 
 
-        PagesResponseModel.First.href = links.get("first").get("href").toString();
-        PagesResponseModel.Last.href = links.get("last").get("href").toString();
         try {
+            PagesResponseModel.First.href = links.get("first").get("href").toString();
+            PagesResponseModel.Last.href = links.get("last").get("href").toString();
             PagesResponseModel.Next.href = links.get("next").get("href").toString();
             PagesResponseModel.Prev.href = links.get("prev").get("href").toString();
         } catch (Exception ignored) {
@@ -136,4 +138,19 @@ public class ProductService {
         return getProducts(PRODUCT_API_END_POINT);
     }
 
+
+
+    static public void createProduct(CreateProductRequestModel product) throws IOException, InterruptedException {
+        System.out.println(new Gson().toJson(product));
+        HttpRequest httpRequest = HttpRequest.newBuilder()
+                .POST(HttpRequest.BodyPublishers.ofString(new Gson().toJson(product)))
+                .uri(URI.create(PRODUCT_API_END_POINT))
+                .header("Authorization", UserService.getAuthToken())
+                .header("Content-Type", "application/json")
+                .build();
+        HttpClient httpClient = HttpClient.newHttpClient();
+        HttpResponse<String> response = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.body());
+
+    }
 }
