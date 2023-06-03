@@ -1,6 +1,8 @@
 package com.example.store_front.Components;
 
 import com.example.store_front.Models.OrderItem;
+import com.example.store_front.Models.Product;
+import com.example.store_front.Service.Product.ProductService;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.geometry.Pos;
@@ -12,35 +14,56 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
+
 public class OrderItemCard extends HBox {
     public OrderItemCard(OrderItem orderItem) {
         super();
+        Product product ;
+        try {
+            product = ProductService.getProduct(orderItem.getProductId());
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        this.getStyleClass().add("cartItem");
+        ImageViewWithSpinner image = new ImageViewWithSpinner(product.getImage(), 50, 50);
+        VBox vBox = new VBox();
+        Text name = new Text(product.getName());
+        name.setFont(Font.font("Poppins", FontWeight.BLACK, 16));
+        name.setFill(Color.WHITE);
+        Text count = new Text(orderItem.getQuantity() + "X");
+        count.setFill(Color.WHITE);
+        Text totalPrice = new Text(orderItem.getTotalPrice() + "$");
+        totalPrice.setFill(Color.WHITE);
+        totalPrice.setFont(Font.font("Poppins", FontWeight.BLACK, 16));
+        totalPrice.setOpacity(0.8);
+        vBox.getChildren().addAll(name);
+        vBox.setAlignment(Pos.CENTER_LEFT);
 
-//        this.getStyleClass().add("cartItem");
-//        ImageViewWithSpinner image = new ImageViewWithSpinner(orderItem.getProduct().getImage() , 50 , 50);
-//        VBox vBox = new VBox();
-//        Text name = new Text(orderItem.getProductId().getName());
-//        name.setFont(Font.font("Poppins" , FontWeight.BLACK , 16));
-//        name.setFill(Color.WHITE);
-//        Text count = new Text(orderItem.getQuantity() + "X");
-//        count.setFill(Color.WHITE);
-//        Text totalPrice = new Text(orderItem.getTotalPrice() + "$");
-//        totalPrice.setFill(Color.WHITE);
-//        totalPrice.setFont(Font.font(Font.getFamilies().get(2) , FontWeight.BLACK , 10));
-//        vBox.getChildren().addAll(name , count , totalPrice);
-//        vBox.setAlignment(Pos.CENTER_LEFT);
-//        Button remove = new Button();
-//        Text icon = GlyphsDude.createIcon(FontAwesomeIcon.REMOVE , "15px");
-//        icon.setFill(Color.WHITE);
-//        remove.setGraphic(icon);
-//        this.setAlignment(Pos.CENTER);
-//        this.setSpacing(200);
-//
-//        HBox imageAndNameBox = new HBox();
-//        imageAndNameBox.setAlignment(Pos.CENTER_LEFT);
-//        imageAndNameBox.setSpacing(15);
-//        imageAndNameBox.getChildren().addAll(image , vBox);
-//        this.getChildren().addAll(imageAndNameBox, remove);
+
+        VBox totalPriceBox = new VBox();
+        totalPriceBox.getChildren().addAll(totalPrice , count);
+        totalPriceBox.setAlignment(Pos.CENTER);
+
+        this.setAlignment(Pos.CENTER);
+        this.setSpacing(200);
+
+        HBox imageAndNameBox = new HBox();
+        imageAndNameBox.setAlignment(Pos.CENTER_LEFT);
+        imageAndNameBox.setSpacing(15);
+        imageAndNameBox.getChildren().addAll(image, vBox);
+
+        Button button = new Button("back");
+        Text icon = GlyphsDude.createIcon(FontAwesomeIcon.ARROW_LEFT, "1.5em");
+        icon.setFill(Color.WHITE);
+        button.setGraphic(icon);
+        button.getStyleClass().add("loginPageBtn");
+        button.setOnAction(e -> {
+            this.getScene().getWindow().hide();
+        });
+
+
+        this.getChildren().addAll(imageAndNameBox , totalPriceBox);
 
     }
 }

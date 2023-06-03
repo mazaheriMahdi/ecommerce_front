@@ -93,3 +93,14 @@
     -fx-background-radius: 20px;
     -fx-border-radius: 20px;
 }
+
+.productPropertyCard{
+    -fx-min-width: 400px;
+    -fx-max-width: 400px;
+    -fx-min-height: 50px;
+    -fx-max-height: 50px;
+    -fx-background-color: #1B222C;
+    -fx-text-fill: white;
+    -fx-background-radius: 20px;
+
+}

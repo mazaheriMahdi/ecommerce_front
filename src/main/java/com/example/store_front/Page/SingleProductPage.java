@@ -1,9 +1,6 @@
 package com.example.store_front.Page;
 
-import com.example.store_front.Components.CustomAlert;
-import com.example.store_front.Components.ImageViewWithSpinner;
-import com.example.store_front.Components.NavBar;
-import com.example.store_front.Components.ReviewBox;
+import com.example.store_front.Components.*;
 import com.example.store_front.Exception.LoginFailedException;
 import com.example.store_front.Models.Product;
 import com.example.store_front.Models.Review;
@@ -29,8 +26,12 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class SingleProductPage extends BorderPane {
+
+    //TODO : show productProperties
+    //TODO : implement Point system
     public SingleProductPage(Product product, List<Review> reviews) {
         super();
 
@@ -39,7 +40,7 @@ public class SingleProductPage extends BorderPane {
         this.setTop(new NavBar());
 
 
-        ImageViewWithSpinner imageViewWithSpinner = new ImageViewWithSpinner(product.getImage(), 500, 500);
+        ImageViewWithSpinner imageViewWithSpinner = new ImageViewWithSpinner(product.getImage(), 200, 200);
 
         HBox hBox = new HBox();
         VBox vBox = new VBox();
@@ -61,6 +62,10 @@ public class SingleProductPage extends BorderPane {
         });
         Text cartIcon = GlyphsDude.createIcon(FontAwesomeIcon.SHOPPING_CART, "15px");
         Text backIcon = GlyphsDude.createIcon(FontAwesomeIcon.ARROW_LEFT, "15px");
+        cartIcon.setFill(Color.WHITE);
+        backIcon.setFill(Color.WHITE);
+
+
         addToCart.setTextFill(Color.WHITE);
         back.setTextFill(Color.WHITE);
         addToCart.setGraphic(cartIcon);
@@ -82,6 +87,13 @@ public class SingleProductPage extends BorderPane {
         vBox.setSpacing(10);
 
 
+
+        List<ProductPropertyCard> productPropertyCards = new ArrayList<>();
+        for (Map<String , String> property : product.getProductProperties()) {
+            productPropertyCards.add(new ProductPropertyCard(property.get("name"), property.get("value")));
+        }
+
+
         List<ReviewBox> reviewBoxes = new ArrayList<>();
         for (Review review : reviews) {
             reviewBoxes.add(new ReviewBox(review));
@@ -95,6 +107,12 @@ public class SingleProductPage extends BorderPane {
         hBox.setPadding(new Insets(10));
 
         root.getChildren().add(hBox);
+        root.getChildren().addAll(productPropertyCards);
+
+        Text commentTitle = new Text("Comments");
+        commentTitle.setFill(Color.WHITE);
+        commentTitle.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+        root.getChildren().add(commentTitle);
         root.getChildren().addAll(reviewBoxes);
         root.setSpacing(15);
         root.setAlignment(Pos.CENTER);
@@ -133,6 +151,10 @@ public class SingleProductPage extends BorderPane {
                 Router.toLoginPage();
                 customAlert.show();
             }
+        });
+
+        back.setOnMouseClicked(e -> {
+            this.getScene().getWindow().hide();
         });
 
 

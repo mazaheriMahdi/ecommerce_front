@@ -109,6 +109,13 @@ public class Router {
         stage.show();
     }
 
+    public static void toHistoryPage(){
+        Stage stage = new Stage();
+        stage.setScene(new Scene(new HistoryPage(), 450, 500));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+    }
+
 
     public static void toMainPage() {
         Scene scene = new Scene(new MainPage(), screenWeight, screenHeight);

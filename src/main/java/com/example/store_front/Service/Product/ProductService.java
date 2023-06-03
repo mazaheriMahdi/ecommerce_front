@@ -33,6 +33,9 @@ public class ProductService {
     }
 
 
+
+
+
     static public List<Product> parsProducts(String response) {
         Map<String, Object> data = new Gson().fromJson(response, new TypeToken<Map<String, Object>>() {
         }.getType());
@@ -57,24 +60,40 @@ public class ProductService {
         List<Product> products = new ArrayList<>();
 
         for (Map<String, Object> productMap : productsMap) {
-            Product product = new Product();
-            Double doubleId = Double.parseDouble(productMap.get("id").toString());
-            Long id = doubleId.longValue();
-            product.setId(id);
-            product.setName(productMap.get("name").toString());
-            product.setCount(Double.parseDouble(productMap.get("count").toString()));
-            product.setPrice(Double.parseDouble(productMap.get("price").toString()));
-            product.setAveragePoint(Double.parseDouble(productMap.get("averagePoint").toString()));
-            product.setImage(productMap.get("image").toString());
-            product.setCategory(new Category(((productMap.get("category")).toString())));
-            List<Map<String, String>> productProperties = new Gson().fromJson(new Gson().toJson(productMap.get("productProperties")), new TypeToken<List<Map<String, Object>>>() {
-            }.getType());
-            product.setProductProperties(productProperties);
-            products.add(product);
+            products.add(parsSingleProduct(productMap));
         }
 
         return products;
 
+    }
+
+    public static Product getProduct(Long id) throws IOException, InterruptedException {
+        HttpRequest httpRequest = HttpRequest.newBuilder()
+                .GET()
+                .uri(URI.create(PRODUCT_API_END_POINT + "/" + id))
+                .header("Authorization", UserService.getAuthToken())
+                .build();
+        HttpClient httpClient = HttpClient.newHttpClient();
+        HttpResponse<String> httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+        return parsSingleProduct(new Gson().fromJson(httpResponse.body(), new TypeToken<Map<String, Object>>() {
+        }.getType()));
+    }
+
+    private static Product parsSingleProduct(Map<String, Object> productMap) {
+        Product product = new Product();
+        Double doubleId = Double.parseDouble(productMap.get("id").toString());
+        Long id = doubleId.longValue();
+        product.setId(id);
+        product.setName(productMap.get("name").toString());
+        product.setCount(Double.parseDouble(productMap.get("count").toString()));
+        product.setPrice(Double.parseDouble(productMap.get("price").toString()));
+        product.setAveragePoint(Double.parseDouble(productMap.get("averagePoint").toString()));
+        product.setImage(productMap.get("image").toString());
+        product.setCategory(new Category(((productMap.get("category")).toString())));
+        List<Map<String, String>> productProperties = new Gson().fromJson(new Gson().toJson(productMap.get("productProperties")), new TypeToken<List<Map<String, Object>>>() {
+        }.getType());
+        product.setProductProperties(productProperties);
+        return product;
     }
 
     static public List<Product> next() throws IOException, InterruptedException {

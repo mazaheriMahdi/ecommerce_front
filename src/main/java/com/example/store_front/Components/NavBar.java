@@ -103,8 +103,8 @@ public class NavBar extends HBox {
             Text historyIcon = GlyphsDude.createIcon(FontAwesomeIcon.HISTORY, "20px");
             historyIcon.setFill(Color.WHITE);
             history.setGraphic(historyIcon);
-            historyIcon.setOnMouseClicked(event -> {
-
+            history.setOnMouseClicked(event -> {
+                Router.toHistoryPage();
             });
             this.getChildren().addAll(cartBtn(), paymentButton, history);
         }
