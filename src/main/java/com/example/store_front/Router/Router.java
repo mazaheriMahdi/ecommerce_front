@@ -127,4 +127,10 @@ public class Router {
         runEvent();
     }
 
+    public static void toProfilePage() {
+        Stage stage = new Stage();
+        stage.setScene(new Scene(new ProfilePage(), 500, 500));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+    }
 }

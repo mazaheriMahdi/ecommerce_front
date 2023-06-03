@@ -1,6 +1,7 @@
 package com.example.store_front.Service.User;
 
 import com.example.store_front.Exception.LoginFailedException;
+import com.example.store_front.Models.RequestModel.ProfilePatchRequestModel;
 import com.example.store_front.Models.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -16,15 +17,13 @@ import java.util.List;
 import java.util.Map;
 
 import static com.example.store_front.Constant.LOGIN_API_END_POINT;
+import static com.example.store_front.Constant.PROFILE_API_END_POINT;
 
 public class UserService {
 
     private static Boolean isLoggedIn;
     private static User currentUser;
 
-    static {
-        isLoggedIn = false;
-    }
 
     public static Boolean getIsLoggedIn() {
         return isLoggedIn;
@@ -35,6 +34,7 @@ public class UserService {
     }
 
     private static List<UserLogInEvent> listener;
+    private static List<ProfileUpdateEvent> profileUpdateEvents;
 
     public static void addOnUserLoginListener(UserLogInEvent event) {
         listener.add(event);
@@ -50,6 +50,12 @@ public class UserService {
 
     static {
         listener = new ArrayList<>();
+        profileUpdateEvents = new ArrayList<>();
+        isLoggedIn = false;
+    }
+
+    public static void addOnProfileUpdateListener(ProfileUpdateEvent event) {
+        profileUpdateEvents.add(event);
     }
 
     public static String getAuthToken() {
@@ -109,7 +115,7 @@ public class UserService {
 
     }
 
-    public static void setCurrentUser(){
+    public static void setCurrentUser() {
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .GET()
                 .uri(URI.create("http://localhost:8080/profile"))
@@ -128,5 +134,22 @@ public class UserService {
 
     public static User getCurrentUser() {
         return currentUser;
+    }
+
+    public static void updateUser(String name, String email) throws IOException, InterruptedException {
+        HttpRequest httpRequest = HttpRequest.newBuilder()
+                .PUT(HttpRequest.BodyPublishers.ofString(new Gson().toJson(new ProfilePatchRequestModel(name, email), ProfilePatchRequestModel.class)))
+                .uri(URI.create(PROFILE_API_END_POINT))
+                .header("Content-Type", "application/json")
+                .header("Authorization", getAuthToken())
+                .build();
+        HttpClient httpClient = HttpClient.newHttpClient();
+        HttpResponse<String> httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+        System.out.println(httpResponse.body());
+        if (httpResponse.statusCode() == 200) {
+            for (ProfileUpdateEvent event : profileUpdateEvents) {
+                event.onProfileUpdated();
+            }
+        }
     }
 }

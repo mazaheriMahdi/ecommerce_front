@@ -1,6 +1,7 @@
 package com.example.store_front.Components;
 
 
+import com.example.store_front.Models.User;
 import com.example.store_front.Router.Router;
 import com.example.store_front.Service.Cart.CartService;
 import com.example.store_front.Service.Order.OrderService;
@@ -86,7 +87,14 @@ public class NavBar extends HBox {
         loginBtn.setOnMouseClicked(event -> {
             Router.toLoginPage();
         });
-        if (UserService.getIsLoggedIn()) this.getChildren().add(profileBox());
+
+        if (UserService.getIsLoggedIn()) {
+            HBox temp = profileBox();
+            temp.setOnMouseClicked(event -> {
+                Router.toProfilePage();
+            });
+            this.getChildren().add(temp);
+        }
         else this.getChildren().addAll(loginBtn, signIn);
         this.getChildren().add(search);
         if (UserService.getIsLoggedIn()) {
@@ -130,6 +138,9 @@ public class NavBar extends HBox {
         first_name.setFill(Color.WHITE);
         first_name.setFont(Font.font("Microsoft Sans Serif", FontWeight.LIGHT, 20));
 
+        UserService.addOnProfileUpdateListener(()->{
+            first_name.setText(UserService.getCurrentUser().getName());
+        });
 
         Text credit = new Text(UserService.getCurrentUser().getCredit() + "$");
         credit.setFont(Font.font("Microsoft Sans Serif", FontWeight.BLACK, 13));

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXProgressSpinner?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="875.0" prefWidth="1128.0" style="-fx-background-color: #1D1D1D;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #121212;" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <MFXButton buttonType="RAISED" defaultButton="true" depthLevel="LEVEL0" rippleAnimateBackground="false" rippleAnimateShadow="true" style="-fx-border-style: solid; -fx-border-width: 0; -fx-blend-mode: normal;" textOverrun="CLIP" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <MFXProgressSpinner />
+         </children>
+      </VBox>
+   </bottom>
+</BorderPane>
