@@ -37,16 +37,16 @@ public class TextFieldWithLabel extends VBox {
 
 
         Label label = new Label(name);
-        TextField email = new TextField();
-        email.getStyleClass().add("darkAccent");
-        email.setPromptText(name.toLowerCase());
+        TextField textField = new TextField();
+        textField.getStyleClass().add("darkAccent");
+        textField.setPromptText(name.toLowerCase());
 
         VBox emailBox = new VBox(label);
         emailBox.setAlignment(Pos.CENTER_LEFT);
         emailBox.setMaxWidth(400);
 
 
-        this.getChildren().addAll(emailBox, email);
+        this.getChildren().addAll(emailBox, textField);
     }
 
     public TextField getTextField() {

@@ -1,10 +1,7 @@
 package com.example.store_front.Models;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +10,7 @@ import java.util.Map;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Product {
     Long id;
     private String name;

@@ -133,4 +133,11 @@ public class Router {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
     }
+
+    public static void toAdminPage() {
+        Stage stage = new Stage();
+        stage.setScene(new Scene(new AdminPage(), screenWeight, screenHeight));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+    }
 }

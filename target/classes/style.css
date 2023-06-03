@@ -104,3 +104,91 @@
     -fx-background-radius: 20px;
 
 }
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-effect: null;
+    -fx-background-color: #5c6b7f;
+
+}
+.tab-pane .tab-header-area{
+    -fx-padding: 30px 10px -1px 10px;
+}
+
+.tab-pane .tab{
+    -fx-background-color: #13151C;
+    -fx-text-fill: white;
+    -fx-padding: 5px 100px;
+    -fx-background-radius: 20px 20px 0px 0px;
+    -fx-border-width: 0px;
+    -fx-effect: null;
+
+}
+
+.tab-pane .tab .darkAccent{
+    -fx-background-color: #1B222C;
+}
+.tab-pane .tab .tab-label{
+    -fx-text-fill: white;
+    -fx-font-family: Poppins;
+
+}
+
+.combo-box-base {
+    -fx-min-width: 400px;
+    -fx-padding: 6;
+    -fx-background-color: #1B222C;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-animated: true;
+}
+.combo-box-base .arrow-button .arrow{
+    -fx-background-color: white;
+}
+
+.combo-box-base .arrow-button{
+    -fx-background-color: transparent;
+}
+
+
+.combo-box-base:showing {
+    -fx-background-color: #1B222C;
+    -fx-border-radius: 5.0 5.0 0.0 0.0;
+    -fx-background-radius: 5.0 5.0 0.0 0.0;
+
+}
+
+.combo-box .list-cell {
+
+    -fx-background-insets: 2.0;
+    -fx-background-radius: 3.0;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-family: "Droid Sans";
+    -fx-font-weight: bold;
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: #0096C9;
+}
+
+.combo-box .list-view {
+    -fx-background-color: #1B222C;
+    -fx-padding: 5.0 0.0;
+    -fx-border-radius: 0.0 0.0 5.0 5.0;
+    -fx-background-radius: 0.0 0.0 5.0 5.0;
+}
+
+.width180{
+    -fx-min-width: 190px;
+    -fx-max-width: 190px;
+}
+
+.combo-box .text-field{
+    -fx-background-color: transparent;
+    -fx-padding: 4;
+}
+
+.scroll-pane{
+    -fx-background-color: #1B222C;
+    -fx-border-width: 0;
+}

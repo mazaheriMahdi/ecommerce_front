@@ -14,18 +14,17 @@ import java.io.IOException;
 public class StoreApp extends Application {
     @Override
     public void start(Stage stage) {
-        if (UserService.checkDataFileExistence()) {
-            UserService.readFromFile();
-        }
-        EventHandler eventHandler = new EventHandler();
-        Router.toMainPage();
-        try {
-            System.out.println(OrderService.getAcceptedOrders());
-        } catch (IOException | InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
-
+//        if (UserService.checkDataFileExistence()) {
+//            UserService.readFromFile();
+//        }
+//        EventHandler eventHandler = new EventHandler();
+//        Router.toMainPage();
+//        try {
+//            System.out.println(OrderService.getAcceptedOrders());
+//        } catch (IOException | InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
+        Router.toAdminPage();
     }
 
     public static void main(String[] args) {

@@ -42,7 +42,7 @@ public class ProductContainer extends FlowPane {
                 System.out.println(newValue);
                 initial(ProductService.search(newValue));
             } catch (IOException | InterruptedException e) {
-                throw new RuntimeException(e);
+
             }
         });
     }
@@ -80,6 +80,7 @@ public class ProductContainer extends FlowPane {
 
     public void initial(List<Product> products) {
         this.getChildren().clear();
+        this.getChildren().add(progressBar);
         double from = 1;
         double to = 1.1;
 

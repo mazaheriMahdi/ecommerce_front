@@ -4,96 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e16fe36-6b60-4e8e-a01c-59f02c6b2cc4" name="Changes" comment="add gitignore to git">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/ProductPropertyCard.java" afterDir="false" />
+    <list default="true" id="4e16fe36-6b60-4e8e-a01c-59f02c6b2cc4" name="Changes" comment="update .gitignore">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/ComboBoxWithLabel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/KeyValueTextFiled.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/RequestModel/CreateProductRequestModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/RequestModel/ProductRequestModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/ProductCreateTab.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/NavBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/NavBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/OrderItemCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/OrderItemCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/OrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/OrderItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/HistoryPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/HistoryPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/SingleProductPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/SingleProductPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/ProductContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/ProductContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/TextFieldWithLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/TextFieldWithLabel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/cardStyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/AdminPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/AdminPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Router/Router.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Router/Router.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Cart/LocaleDateAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Cart/LocaleDateAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Order/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Order/OrderService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Product/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Product/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/StoreApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/StoreApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Components/CartItemCard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Components/CustomAlert.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Components/FilterBox.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Components/ImageViewWithSpinner.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Components/NavBar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Components/OrderItemCard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Components/PaginationToolbar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Components/ProductCard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Components/ProductContainer$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Components/ProductContainer$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Components/ProductContainer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Components/ProductContainerHeader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Components/ReviewBox.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Components/TextFieldWithLabel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Constant.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Controller/CartController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/EventHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Exception/AddToCartException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Exception/LoginFailedException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Models/Category.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Models/Order.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Models/OrderItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Models/Payment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Models/Product.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Models/ProductResponseModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Models/RequestModel/AddToCartRequestModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Models/RequestModel/PaymentRequestModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Models/ResponseModel/MessageResponseModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Models/ResponseModel/PagesResponseModel$First.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Models/ResponseModel/PagesResponseModel$Last.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Models/ResponseModel/PagesResponseModel$Next.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Models/ResponseModel/PagesResponseModel$Prev.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Models/ResponseModel/PagesResponseModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Models/Review.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Models/Status.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Models/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Models/cart/Cart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Models/cart/CartItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Page/CartPage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Page/HistoryPage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Page/LoginPage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Page/MainPage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Page/PaymentPage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Page/SingleProductPage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Router/RoutEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Router/Router$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Router/Router.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/Cart/AddToCartEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/Cart/CartService$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/Cart/CartService$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/Cart/CartService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/Cart/LocaleDateAdapter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/Cart/OnCartItemRemoveEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/Order/CreditNotEnoughEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/Order/LackOfInventoryEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/Order/OrderCreatedEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/Order/OrderService$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/Order/OrderService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/PaymentService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/Product/PageChangeEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/Product/ProductService$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/Product/ProductService$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/Product/ProductService$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/Product/ProductService$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/Product/ProductService$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/Product/ProductService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/Review/ReviewSendEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/Review/ReviewService$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/Review/ReviewService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/User/UserLogInEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/User/UserService$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/Service/User/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/StoreApp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/store_front/hello-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,8 +33,8 @@
       <list>
         <option value="CSS File" />
         <option value="FxmlFile" />
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -183,7 +111,7 @@
       <workItem from="1685538320804" duration="1101000" />
       <workItem from="1685614079776" duration="15872000" />
       <workItem from="1685692715192" duration="12316000" />
-      <workItem from="1685714643844" duration="19447000" />
+      <workItem from="1685714643844" duration="42306000" />
     </task>
     <task id="LOCAL-00001" summary="add id to product">
       <created>1685199465103</created>
@@ -325,7 +253,35 @@
       <option name="project" value="LOCAL" />
       <updated>1685462827244</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="-extract standalone prodcut parser in ProductService &#10;-create ProductPropertyCard.java&#10;-fix Order Item Cad&#10; add setter , getter &amp; constructor&#10;-create HistoryPage">
+      <created>1685751358565</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1685751358565</updated>
+    </task>
+    <task id="LOCAL-00022" summary="delete .class files">
+      <created>1685751393959</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1685751393959</updated>
+    </task>
+    <task id="LOCAL-00023" summary="update .gitignore">
+      <created>1685751835369</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1685751835369</updated>
+    </task>
+    <task id="LOCAL-00024" summary="update .gitignore">
+      <created>1685751864000</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1685751864000</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,20 +306,28 @@
     <MESSAGE value="add pages list for handling back and track user path" />
     <MESSAGE value="add Review model" />
     <MESSAGE value="add gitignore to git" />
-    <option name="LAST_COMMIT_MESSAGE" value="add gitignore to git" />
+    <MESSAGE value="-extract standalone prodcut parser in ProductService &#10;-create ProductPropertyCard.java&#10;-fix Order Item Cad&#10; add setter , getter &amp; constructor&#10;-create HistoryPage" />
+    <MESSAGE value="delete .class files" />
+    <MESSAGE value="update .gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="update .gitignore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/store_front/Service/User/UserService.java</url>
-          <line>105</line>
+          <line>111</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Cart/CartService.java</url>
           <line>113</line>
           <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Product/ProductService.java</url>
+          <line>133</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="com.google.gson.JsonIOException" package="com.google.gson" />
