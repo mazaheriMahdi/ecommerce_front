@@ -9,5 +9,16 @@ import lombok.Setter;
 @Setter
 @Getter
 public class Category {
+
+    private Long id;
     private String name;
+
+    public Category(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return id + ":"+name;
+    }
 }
