@@ -192,3 +192,10 @@
     -fx-background-color: #1B222C;
     -fx-border-width: 0;
 }
+.height200{
+    -fx-min-height: 130px;
+    -fx-max-height: 250px;
+}
+.acceptBtn{
+    -fx-background-color: #16b205;
+}

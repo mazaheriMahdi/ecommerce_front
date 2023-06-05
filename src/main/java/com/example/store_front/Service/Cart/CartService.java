@@ -89,7 +89,7 @@ public class CartService {
         String object = new Gson().toJson(model);
         HttpRequest httpRequest2 = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofString(object))
-                .header("Authorization", "9e848dfa-bb34-4b69-9e52-476a4280c7b6")
+                .header("Authorization", UserService.getAuthToken())
                 .header("Content-Type", "application/json")
                 .uri(uri).build();
         HttpClient httpClient = HttpClient.newHttpClient();

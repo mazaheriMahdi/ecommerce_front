@@ -4,12 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e16fe36-6b60-4e8e-a01c-59f02c6b2cc4" name="Changes" comment="add to string to product model &#10;and create admin page components">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/PropertyKeyService.java" afterDir="false" />
+    <list default="true" id="4e16fe36-6b60-4e8e-a01c-59f02c6b2cc4" name="Changes" comment="finish product create logic in adminPage">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/ApplicationCard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/ApplicationTab.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Application/ApplicationAcceptedEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Application/ApplicationRejectedEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Application/ApplicationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/KeyValueTextFiled.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/KeyValueTextFiled.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/CartItemCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/CartItemCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/OrderItemCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/OrderItemCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/AdminPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/AdminPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/ProductCreateTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/ProductCreateTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Router/Router.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Router/Router.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Cart/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Cart/CartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Review/ReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Review/ReviewService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/StoreApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/StoreApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +36,8 @@
         <option value="CSS File" />
         <option value="FxmlFile" />
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -43,22 +57,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.store_front.Components" />
@@ -99,7 +113,8 @@
       <workItem from="1685538320804" duration="1101000" />
       <workItem from="1685614079776" duration="15872000" />
       <workItem from="1685692715192" duration="12316000" />
-      <workItem from="1685714643844" duration="44348000" />
+      <workItem from="1685714643844" duration="53804000" />
+      <workItem from="1685951891169" duration="2619000" />
     </task>
     <task id="LOCAL-00001" summary="add id to product">
       <created>1685199465103</created>
@@ -297,14 +312,20 @@
       <option name="project" value="LOCAL" />
       <updated>1685811313444</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="finish product create logic in adminPage">
+      <created>1685813351526</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1685813351526</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add id to product" />
     <MESSAGE value="add permission to gson to models" />
     <MESSAGE value="create add to cart request model for sending to backend" />
     <MESSAGE value="add cart endpoint to Constant.java" />
@@ -329,7 +350,8 @@
     <MESSAGE value="add to string to product model" />
     <MESSAGE value="create ProductRequestModel and write logic for sending ad product to server" />
     <MESSAGE value="add to string to product model &#10;and create admin page components" />
-    <option name="LAST_COMMIT_MESSAGE" value="add to string to product model &#10;and create admin page components" />
+    <MESSAGE value="finish product create logic in adminPage" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish product create logic in adminPage" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -345,9 +367,9 @@
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Product/ProductService.java</url>
-          <line>133</line>
-          <option name="timeStamp" value="15" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Review/ReviewService.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="com.google.gson.JsonIOException" package="com.google.gson" />

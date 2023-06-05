@@ -197,7 +197,6 @@ public class ProductCreateTab extends BorderPane {
                     this.addKeyValueTextFiled();
                     this.getKeyValueTextFiled().get(this.getKeyValueTextFiled().size() - 1).addKey(s);
                     this.getKeyValueTextFiled().get(this.getKeyValueTextFiled().size() - 1).selectLast();
-//                    this.getKeyValueTextFiled().get(this.getKeyValueTextFiled().size() - 1).setKey(s);
                 }
 
             });

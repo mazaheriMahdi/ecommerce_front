@@ -56,10 +56,10 @@ public class ReviewService {
 
     public static List<Review> parsReview(String json) {
         List<Review> reviews = new ArrayList<>();
+        if (json.equals("[]"))
+            return reviews;
         List<Map<String, Object>> data = new Gson().fromJson(json, new TypeToken<List<Map<String, Object>>>() {
         }.getType());
-        if (data == null)
-            return reviews;
         for (Map<String, Object> reviewMap : data) {
             Review review = new Review();
             review.setContent(reviewMap.get("content").toString());
@@ -77,7 +77,7 @@ public class ReviewService {
                 .GET()
                 .uri(URI.create(PRODUCT_API_END_POINT + "/" + productId + "/review"))
                 .header("Content-Type", "application/json")
-                .header("Authorization", "9e848dfa-bb34-4b69-9e52-476a4280c7b6")
+                .header("Authorization", UserService.getAuthToken())
                 .build();
         HttpClient client = HttpClient.newHttpClient();
         HttpResponse<String> response = client.send(httpRequest, HttpResponse.BodyHandlers.ofString());

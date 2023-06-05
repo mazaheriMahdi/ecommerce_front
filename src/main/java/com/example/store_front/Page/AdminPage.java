@@ -10,7 +10,8 @@ public class AdminPage extends TabPane {
         this.getStyleClass().add("darkPrimaryBack");
         Tab products = new Tab("Products");
         products.setContent(new ProductCreateTab());
-        Tab orders = new Tab("Orders");
+        Tab orders = new Tab("Application");
+        orders.setContent(new ApplicationTab());
         Tab categories = new Tab("Categories");
         Tab discounts = new Tab("Discounts");
         Tab users = new Tab("Users");

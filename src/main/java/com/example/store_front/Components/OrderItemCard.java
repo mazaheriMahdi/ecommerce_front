@@ -5,8 +5,10 @@ import com.example.store_front.Models.Product;
 import com.example.store_front.Service.Product.ProductService;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -15,8 +17,9 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 
-public class OrderItemCard extends HBox {
+public class OrderItemCard extends BorderPane {
     public OrderItemCard(OrderItem orderItem) {
         super();
         Product product ;
@@ -45,8 +48,6 @@ public class OrderItemCard extends HBox {
         totalPriceBox.getChildren().addAll(totalPrice , count);
         totalPriceBox.setAlignment(Pos.CENTER);
 
-        this.setAlignment(Pos.CENTER);
-        this.setSpacing(200);
 
         HBox imageAndNameBox = new HBox();
         imageAndNameBox.setAlignment(Pos.CENTER_LEFT);
@@ -62,8 +63,14 @@ public class OrderItemCard extends HBox {
             this.getScene().getWindow().hide();
         });
 
+        VBox rightBox = new VBox(totalPriceBox);
+        rightBox.setAlignment(Pos.CENTER_RIGHT);
+        VBox leftBox = new VBox(imageAndNameBox);
+        leftBox.setAlignment(Pos.CENTER_LEFT);
 
-        this.getChildren().addAll(imageAndNameBox , totalPriceBox);
+        this.setPadding(new Insets(10));
+        this.setLeft(leftBox);
+        this.setRight(rightBox);
 
     }
 }

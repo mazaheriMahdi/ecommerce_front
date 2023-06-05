@@ -4,8 +4,10 @@ import com.example.store_front.Models.cart.CartItem;
 import com.example.store_front.Service.Cart.CartService;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -15,7 +17,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-public class CartItemCard extends HBox {
+public class CartItemCard extends BorderPane {
     public CartItemCard(CartItem cartItem) {
         super();
         this.getStyleClass().add("cartItem");
@@ -35,8 +37,7 @@ public class CartItemCard extends HBox {
         Text icon = GlyphsDude.createIcon(FontAwesomeIcon.REMOVE , "15px");
         icon.setFill(Color.WHITE);
         remove.setGraphic(icon);
-        this.setAlignment(Pos.CENTER);
-        this.setSpacing(200);
+
 
         HBox imageAndNameBox = new HBox();
         imageAndNameBox.setAlignment(Pos.CENTER_LEFT);
@@ -44,7 +45,14 @@ public class CartItemCard extends HBox {
         imageAndNameBox.getChildren().addAll(image , vBox);
         this.getChildren().addAll(imageAndNameBox, remove);
 
+        VBox rightBox = new VBox(remove);
+        rightBox.setAlignment(Pos.CENTER_RIGHT);
+        VBox leftBox = new VBox(imageAndNameBox);
+        leftBox.setAlignment(Pos.CENTER_LEFT);
 
+        this.setPadding(new Insets(10));
+        this.setLeft(leftBox);
+        this.setRight(rightBox);
 
         remove.setOnMouseClicked(event -> {
             try {
