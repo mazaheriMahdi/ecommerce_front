@@ -77,7 +77,7 @@ public class ProductCard extends VBox {
                 mouseEvent.consume();
 
             } catch (IOException | InterruptedException e) {
-                throw new RuntimeException(e);
+                System.out.println("send data failed");
             }
         });
     }

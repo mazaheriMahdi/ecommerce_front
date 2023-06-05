@@ -4,6 +4,7 @@ import com.example.store_front.Components.CustomAlert;
 import com.example.store_front.Models.User;
 import com.example.store_front.Router.Router;
 import com.example.store_front.Service.Cart.CartService;
+import com.example.store_front.Service.Discount.DiscountService;
 import com.example.store_front.Service.Order.OrderService;
 import com.example.store_front.Service.Review.ReviewService;
 import com.example.store_front.Service.User.UserService;
@@ -48,6 +49,16 @@ public class EventHandler {
             CustomAlert staffLoginAlert = new CustomAlert("Staff Login Successful");
             staffLoginAlert.show();
             Router.toAdminPage();
+        });
+
+        UserService.addOnLoginNeededSend(() -> {
+            CustomAlert loginNeededAlert = new CustomAlert("Login Needed");
+            loginNeededAlert.show();
+        });
+
+        DiscountService.addDiscountAddedListener(() -> {
+            CustomAlert discountAddedAlert = new CustomAlert("Discount Added");
+            discountAddedAlert.show();
         });
 
     }
