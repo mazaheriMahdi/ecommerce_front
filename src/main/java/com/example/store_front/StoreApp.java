@@ -5,6 +5,7 @@ import com.example.store_front.Exception.LoginFailedException;
 import com.example.store_front.Models.Order;
 import com.example.store_front.Models.User;
 import com.example.store_front.Router.Router;
+import com.example.store_front.Service.CategoryService;
 import com.example.store_front.Service.Order.OrderService;
 import com.example.store_front.Service.User.UserService;
 import javafx.application.Application;
@@ -20,6 +21,8 @@ public class StoreApp extends Application {
         if (UserService.checkDataFileExistence()) {
             UserService.readFromFile();
         }
+
+
 
 
 //        Router.toAdminPage();

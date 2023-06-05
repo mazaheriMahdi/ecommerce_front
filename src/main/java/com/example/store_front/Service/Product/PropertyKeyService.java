@@ -1,4 +1,4 @@
-package com.example.store_front.Service;
+package com.example.store_front.Service.Product;
 
 
 import com.example.store_front.Service.User.UserService;

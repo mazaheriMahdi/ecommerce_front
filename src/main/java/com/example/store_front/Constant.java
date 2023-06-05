@@ -4,6 +4,7 @@ public class Constant {
     public final static String FONT_NAME = "Poppins";
     public final static String API_END_POINT = "http://localhost:8080/";
     public final static String PRODUCT_API_END_POINT = API_END_POINT + "product";
+    public final static String CATEGORY_API_END_POINT = API_END_POINT + "category";
     public final static String CART_API_END_POINT = API_END_POINT + "cart";
     public final static String ORDER_API_END_POINT = API_END_POINT + "orders";
     public final static String AUTH_API_END_POINT = API_END_POINT + "auth";
@@ -13,4 +14,5 @@ public class Constant {
     public final static String PROFILE_API_END_POINT = API_END_POINT + "profile";
     public final static String PROPERTY_KEY_API_END_POINT = API_END_POINT + "property";
     public final static String APPLICATION_API_END_POINT = API_END_POINT + "application";
+    public final static String DISCOUNT_API_END_POINT = API_END_POINT + "discount";
 }

@@ -7,7 +7,7 @@ import com.example.store_front.Models.Category;
 import com.example.store_front.Models.RequestModel.CreateProductRequestModel;
 import com.example.store_front.Models.RequestModel.ProductRequestModel;
 import com.example.store_front.Service.Product.ProductService;
-import com.example.store_front.Service.PropertyKeyService;
+import com.example.store_front.Service.Product.PropertyKeyService;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.geometry.Pos;

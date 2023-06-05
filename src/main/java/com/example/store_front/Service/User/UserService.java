@@ -35,10 +35,12 @@ public class UserService {
     private static List<ProfileUpdateEvent> profileUpdateEvents;
     private static List<StaffLoginEvent> staffLoginEvents;
     private static List<UserLogoutEvent> userLogoutEvents;
+    private static List<OnLoginNeededSend> onLoginNeededSends;
     private static String authToken;
 
 
     static {
+        onLoginNeededSends = new ArrayList<>();
         userLogoutEvents = new ArrayList<>();
         staffLoginEvents = new ArrayList<>();
         listener = new ArrayList<>();
@@ -60,7 +62,15 @@ public class UserService {
     public static void addOnUserLogoutListener(UserLogoutEvent event) {
         userLogoutEvents.add(event);
     }
+    public static void addOnLoginNeededSend(OnLoginNeededSend event) {
+        onLoginNeededSends.add(event);
+    }
 
+    private static void runOnLoginNeededSend() {
+        for (OnLoginNeededSend event : onLoginNeededSends) {
+            event.onLoginNeeded();
+        }
+    }
     private static void runEvents() {
         for (UserLogInEvent event : listener) {
             event.onUserLogIn();
@@ -79,7 +89,9 @@ public class UserService {
             if (checkDataFileExistence()) {
                 readFromFile();
 
-            } else throw new LoginFailedException();
+            } else {
+                runOnLoginNeededSend();
+            }
         }
         return authToken;
     }

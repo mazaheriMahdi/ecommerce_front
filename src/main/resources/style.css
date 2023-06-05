@@ -115,7 +115,8 @@
 }
 
 .tab-pane .tab{
-    -fx-background-color: #13151C;
+    -fx-background-color: #1B222C;
+
     -fx-text-fill: white;
     -fx-padding: 5px 100px;
     -fx-background-radius: 20px 20px 0px 0px;
@@ -124,6 +125,18 @@
 
 }
 
+.tab-pane .tab:selected{
+    -fx-background-color: #13151C;
+    -fx-padding: 5px 100px;
+    -fx-background-radius: 20px 20px 0px 0px;
+    -fx-border-width: 0px;
+    -fx-effect: null;
+}
+
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-border-width: 0;
+    -fx-border-color: -fx-focus-color;
+}
 .tab-pane .tab .darkAccent{
     -fx-background-color: #1B222C;
 }
