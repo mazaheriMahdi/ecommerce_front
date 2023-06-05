@@ -114,7 +114,14 @@ public class NavBar extends HBox {
             history.setOnMouseClicked(event -> {
                 Router.toHistoryPage();
             });
-            this.getChildren().addAll(cartBtn(), paymentButton, history);
+
+
+            Button logout = new Button("logout");
+            logout.setOnMouseClicked(event -> {
+                UserService.logout();
+                Router.toMainPage();
+            });
+            this.getChildren().addAll(cartBtn(), paymentButton, history , logout);
         }
 
     }

@@ -1,6 +1,8 @@
 package com.example.store_front;
 
 import com.example.store_front.Components.CustomAlert;
+import com.example.store_front.Models.User;
+import com.example.store_front.Router.Router;
 import com.example.store_front.Service.Cart.CartService;
 import com.example.store_front.Service.Order.OrderService;
 import com.example.store_front.Service.Review.ReviewService;
@@ -39,6 +41,13 @@ public class EventHandler {
             CustomAlert profileAlert = new CustomAlert("Profile Updated");
             profileAlert.show();
             UserService.setCurrentUser();
+        });
+
+        UserService.addOnStaffLoginListener(() -> {
+            System.out.println("asdasdasdasdasdasdasda");
+            CustomAlert staffLoginAlert = new CustomAlert("Staff Login Successful");
+            staffLoginAlert.show();
+            Router.toAdminPage();
         });
 
     }

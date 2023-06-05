@@ -1,10 +1,12 @@
 package com.example.store_front.Router;
 
 import com.example.store_front.Models.Product;
+import com.example.store_front.Models.User;
 import com.example.store_front.Page.*;
 import com.example.store_front.Service.Cart.CartService;
 import com.example.store_front.Service.Order.OrderService;
 import com.example.store_front.Service.Review.ReviewService;
+import com.example.store_front.Service.User.UserService;
 import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -124,6 +126,8 @@ public class Router {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
+        UserService.addOnStaffLoginListener(stage::close);
+        UserService.addOnUserLogoutListener(stage::close);
         runEvent();
     }
 

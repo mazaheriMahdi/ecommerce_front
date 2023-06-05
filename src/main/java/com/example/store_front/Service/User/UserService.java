@@ -16,14 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static com.example.store_front.Constant.LOGIN_API_END_POINT;
-import static com.example.store_front.Constant.PROFILE_API_END_POINT;
+import static com.example.store_front.Constant.*;
 
 public class UserService {
 
     private static Boolean isLoggedIn;
     private static User currentUser;
-
 
     public static Boolean getIsLoggedIn() {
         return isLoggedIn;
@@ -35,9 +33,32 @@ public class UserService {
 
     private static List<UserLogInEvent> listener;
     private static List<ProfileUpdateEvent> profileUpdateEvents;
+    private static List<StaffLoginEvent> staffLoginEvents;
+    private static List<UserLogoutEvent> userLogoutEvents;
+    private static String authToken;
+
+
+    static {
+        userLogoutEvents = new ArrayList<>();
+        staffLoginEvents = new ArrayList<>();
+        listener = new ArrayList<>();
+        profileUpdateEvents = new ArrayList<>();
+        isLoggedIn = false;
+    }
 
     public static void addOnUserLoginListener(UserLogInEvent event) {
         listener.add(event);
+    }
+
+    public static void addOnProfileUpdateListener(ProfileUpdateEvent event) {
+        profileUpdateEvents.add(event);
+    }
+
+    public static void addOnStaffLoginListener(StaffLoginEvent event) {
+        staffLoginEvents.add(event);
+    }
+    public static void addOnUserLogoutListener(UserLogoutEvent event) {
+        userLogoutEvents.add(event);
     }
 
     private static void runEvents() {
@@ -46,17 +67,12 @@ public class UserService {
         }
     }
 
-    private static String authToken;
-
-    static {
-        listener = new ArrayList<>();
-        profileUpdateEvents = new ArrayList<>();
-        isLoggedIn = false;
+    private static void runStaffLoginEvents() {
+        for (StaffLoginEvent event : staffLoginEvents) {
+            event.onStaffUserLogIn();
+        }
     }
 
-    public static void addOnProfileUpdateListener(ProfileUpdateEvent event) {
-        profileUpdateEvents.add(event);
-    }
 
     public static String getAuthToken() {
         if (authToken == null) {
@@ -73,12 +89,45 @@ public class UserService {
         saveToFile(authToken);
         setIsLoggedIn(true);
         setCurrentUser();
+        try {
+            if (checkIsStaff()) {
+                System.out.println("Staff");
+                runStaffLoginEvents();
+            }
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         runEvents();
     }
+
+    public static void logout() {
+        File file = new File("data.txt");
+        file.delete();
+        setIsLoggedIn(false);
+        authToken = null;
+        for (UserLogoutEvent event : userLogoutEvents) {
+            event.onUserLogOut();
+        }
+    }
+
 
     public static boolean checkDataFileExistence() {
         File file = new File("data.txt");
         return file.exists();
+    }
+
+    public static boolean checkIsStaff() throws IOException, InterruptedException {
+        HttpRequest httpRequest = HttpRequest.newBuilder()
+                .POST(HttpRequest.BodyPublishers.noBody())
+                .uri(URI.create(AUTH_API_END_POINT + "/isStaff"))
+                .header("Content-Type", "application/json")
+                .header("Authorization", UserService.getAuthToken())
+                .build();
+        HttpClient httpClient = HttpClient.newHttpClient();
+        HttpResponse<String> response = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+        Map<String, Boolean> data = new Gson().fromJson(response.body(), new TypeToken<Map<String, Boolean>>() {
+        }.getType());
+        return data.get("isStaff");
     }
 
     @SneakyThrows
@@ -86,6 +135,7 @@ public class UserService {
         FileOutputStream fileOutputStream = new FileOutputStream("data.txt");
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
         objectOutputStream.writeObject(token);
+        fileOutputStream.close();
     }
 
     @SneakyThrows
@@ -94,6 +144,7 @@ public class UserService {
         ObjectInputStream objectInputStream = new ObjectInputStream(fileOutputStream);
         setAuthToken((String) objectInputStream.readObject());
         setIsLoggedIn(true);
+        fileOutputStream.close();
     }
 
 
