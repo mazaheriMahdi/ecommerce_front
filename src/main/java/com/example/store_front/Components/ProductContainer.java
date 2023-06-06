@@ -42,7 +42,8 @@ public class ProductContainer extends FlowPane {
                 System.out.println(newValue);
                 initial(ProductService.search(newValue));
             } catch (IOException | InterruptedException e) {
-
+                CustomAlert customAlert = new CustomAlert("ERROR");
+                customAlert.show();
             }
         });
     }
