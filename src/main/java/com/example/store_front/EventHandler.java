@@ -4,6 +4,7 @@ import com.example.store_front.Components.CustomAlert;
 import com.example.store_front.Models.User;
 import com.example.store_front.Router.Router;
 import com.example.store_front.Service.Cart.CartService;
+import com.example.store_front.Service.Category.CategoryService;
 import com.example.store_front.Service.Discount.DiscountService;
 import com.example.store_front.Service.Order.OrderService;
 import com.example.store_front.Service.Review.ReviewService;
@@ -59,6 +60,11 @@ public class EventHandler {
         DiscountService.addDiscountAddedListener(() -> {
             CustomAlert discountAddedAlert = new CustomAlert("Discount Added");
             discountAddedAlert.show();
+        });
+
+        CategoryService.addCategoryAddEvent(() -> {
+            CustomAlert categoryAddedAlert = new CustomAlert("Category Added");
+            categoryAddedAlert.show();
         });
 
     }
