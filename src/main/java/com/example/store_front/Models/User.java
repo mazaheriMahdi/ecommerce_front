@@ -15,4 +15,5 @@ public class User implements Serializable {
     private String email;
     private double credit;
     private String avatarUrl;
+    private Boolean isStaff;
 }
