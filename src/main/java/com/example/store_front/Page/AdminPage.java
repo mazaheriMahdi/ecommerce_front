@@ -18,15 +18,13 @@ public class AdminPage extends TabPane {
         discounts.setContent(new DiscountTabPane());
         Tab users = new Tab("Users");
         users.setContent(new UserTab());
-        Tab profile = new Tab("Profile");
-        this.getTabs().addAll(products,discounts,categories, orders, users, profile);
+        this.getTabs().addAll(products,discounts,categories, orders, users);
 
-
+        categories.setClosable(false);
         products.setClosable(false);
         orders.setClosable(false);
         users.setClosable(false);
         discounts.setClosable(false);
-        profile.setClosable(false);
 
 
     }
