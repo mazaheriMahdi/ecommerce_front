@@ -99,6 +99,14 @@ public class Router {
                     throw new RuntimeException(e);
                 }
             });
+
+            CartService.addOnDiscountSetListener(()->{
+                try {
+                    stage.setScene(new Scene(new CartPage(CartService.getCart()), 500, 500));
+                } catch (IOException | InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            });
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }

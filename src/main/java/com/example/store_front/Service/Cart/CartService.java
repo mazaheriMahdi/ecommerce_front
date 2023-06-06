@@ -22,14 +22,21 @@ import java.util.Map;
 import static com.example.store_front.Constant.CART_API_END_POINT;
 
 public class CartService {
-    public static List<AddToCartEvent> listeners;
-    public static List<OnCartItemRemoveEvent> onCartItemRemoveEventListeners;
+    private static List<AddToCartEvent> listeners;
+    private static List<OnCartItemRemoveEvent> onCartItemRemoveEventListeners;
+    private static List<OnDiscountSetEvent> onDiscountSetEventListeners;
+
     private static Cart currentCart;
     private static String cartId;
 
     static {
         listeners = new ArrayList<>();
         onCartItemRemoveEventListeners = new ArrayList<>();
+        onDiscountSetEventListeners = new ArrayList<>();
+    }
+
+    public static void addOnDiscountSetListener(OnDiscountSetEvent event) {
+        onDiscountSetEventListeners.add(event);
     }
 
     public CartService() {
@@ -52,6 +59,7 @@ public class CartService {
                 .create();
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpResponse<String> httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+        System.out.println(httpResponse.body());
         return gson.fromJson(httpResponse.body(), Cart.class);
     }
 
@@ -122,5 +130,21 @@ public class CartService {
 
     public static void addListener(AddToCartEvent listener) {
         listeners.add(listener);
+    }
+
+    public static void applyDiscountCode(String code) throws IOException, InterruptedException {
+        HttpRequest httpRequest = HttpRequest.newBuilder()
+                .header("Content-Type", "application/json")
+                .header("Authorization", UserService.getAuthToken())
+                .uri(URI.create(CART_API_END_POINT + "/" + CartService.getCartId() + "/setDiscountCode"))
+                .POST(HttpRequest.BodyPublishers.ofString("{\"discountCode\": \"" + code + "\"}"))
+                .build();
+        HttpClient httpClient = HttpClient.newHttpClient();
+        HttpResponse<String> response = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.body());
+
+        for (OnDiscountSetEvent listener : onDiscountSetEventListeners) {
+            listener.onDiscountSet();
+        }
     }
 }
