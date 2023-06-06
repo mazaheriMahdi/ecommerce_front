@@ -1,11 +1,13 @@
 package com.example.store_front.Page;
 
 import com.example.store_front.Components.ComboBoxWithLabel;
+import com.example.store_front.Components.CustomAlert;
 import com.example.store_front.Components.KeyValueTextFiled;
 import com.example.store_front.Components.TextFieldWithLabel;
 import com.example.store_front.Models.Category;
 import com.example.store_front.Models.RequestModel.CreateProductRequestModel;
 import com.example.store_front.Models.RequestModel.ProductRequestModel;
+import com.example.store_front.Service.Category.CategoryService;
 import com.example.store_front.Service.Product.ProductService;
 import com.example.store_front.Service.Product.PropertyKeyService;
 import de.jensd.fx.glyphs.GlyphsDude;
@@ -70,8 +72,14 @@ public class ProductCreateTab extends BorderPane {
         TextFieldWithLabel count = new TextFieldWithLabel("Count");
         TextFieldWithLabel image = new TextFieldWithLabel("Image URL");
 
-
-        ComboBoxWithLabel<String> category = new ComboBoxWithLabel<>("Category", new String[]{"CAR", "Phone", "SSD"});
+        List<String> nameList = new ArrayList<>();
+        try {
+            CategoryService.getAll().forEach(category -> nameList.add(category.getName()));
+        } catch (IOException | InterruptedException e) {
+            CustomAlert customAlert = new CustomAlert("Error");
+            customAlert.show();
+        }
+        ComboBoxWithLabel<String> category = new ComboBoxWithLabel<>("Category", nameList.toArray(String[]::new));
         Button button = new Button("add");
         button.getStyleClass().add("loginPageBtn");
         Text icon = GlyphsDude.createIcon(FontAwesomeIcon.PLUS, "10px");
