@@ -2,6 +2,7 @@ package com.example.store_front.Service.User;
 
 import com.example.store_front.Exception.LoginFailedException;
 import com.example.store_front.Models.RequestModel.ProfilePatchRequestModel;
+import com.example.store_front.Models.RequestModel.SignInRequestModel;
 import com.example.store_front.Models.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -36,16 +37,19 @@ public class UserService {
     private static List<StaffLoginEvent> staffLoginEvents;
     private static List<UserLogoutEvent> userLogoutEvents;
     private static List<OnLoginNeededSend> onLoginNeededSends;
+    private static List<OnSignInEvent> onSignInEvents;
     private static String authToken;
 
 
     static {
+
         onLoginNeededSends = new ArrayList<>();
         userLogoutEvents = new ArrayList<>();
         staffLoginEvents = new ArrayList<>();
         listener = new ArrayList<>();
         profileUpdateEvents = new ArrayList<>();
         isLoggedIn = false;
+        onSignInEvents = new ArrayList<>();
     }
 
     public static void addOnUserLoginListener(UserLogInEvent event) {
@@ -231,5 +235,23 @@ public class UserService {
         httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
         return new Gson().fromJson(httpResponse.body(), new TypeToken<List<User>>() {
         }.getType());
+    }
+
+
+    public static void signIn(String name, String email, String pass , String avatar_url) throws IOException, InterruptedException {
+        HttpRequest httpRequest = HttpRequest.newBuilder()
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(
+                        new Gson().toJson(new SignInRequestModel(name, email, pass ,avatar_url )
+                                , SignInRequestModel.class)))
+                .uri(URI.create(AUTH_API_END_POINT + "/signIn"))
+                .build();
+        HttpClient httpClient = HttpClient.newHttpClient();
+        HttpResponse<String> httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+        if (httpResponse.statusCode() == 200){
+            setAuthToken(((Map<String, String>) new Gson().fromJson(httpResponse.body(), new TypeToken<Map<String, String>>() {
+            }.getType())).get("token"));
+        }
+
     }
 }

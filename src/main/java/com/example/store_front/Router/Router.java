@@ -1,8 +1,8 @@
 package com.example.store_front.Router;
 
 import com.example.store_front.Models.Product;
-import com.example.store_front.Models.User;
 import com.example.store_front.Page.*;
+import com.example.store_front.Page.Admin.AdminPage;
 import com.example.store_front.Service.Cart.CartService;
 import com.example.store_front.Service.Order.OrderService;
 import com.example.store_front.Service.Review.ReviewService;
@@ -10,13 +10,11 @@ import com.example.store_front.Service.User.UserService;
 import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.lang.invoke.LambdaMetafactory;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -149,6 +147,13 @@ public class Router {
     public static void toAdminPage() {
         Stage stage = new Stage();
         stage.setScene(new Scene(new AdminPage(), screenWeight, screenHeight));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+    }
+
+    public static void toSignInPage() {
+        Stage stage = new Stage();
+        stage.setScene(new Scene(new SignInPage(), 500, 500));
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
     }

@@ -87,6 +87,9 @@ public class NavBar extends HBox {
         Button loginBtn = new Button("Login");
         Button signIn = new Button("Sign in");
 
+        signIn.setOnMouseClicked(event -> {
+            Router.toSignInPage();
+        });
         loginBtn.setOnMouseClicked(event -> {
             Router.toLoginPage();
         });
