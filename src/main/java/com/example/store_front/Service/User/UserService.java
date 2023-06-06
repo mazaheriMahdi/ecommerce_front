@@ -59,9 +59,11 @@ public class UserService {
     public static void addOnStaffLoginListener(StaffLoginEvent event) {
         staffLoginEvents.add(event);
     }
+
     public static void addOnUserLogoutListener(UserLogoutEvent event) {
         userLogoutEvents.add(event);
     }
+
     public static void addOnLoginNeededSend(OnLoginNeededSend event) {
         onLoginNeededSends.add(event);
     }
@@ -71,6 +73,7 @@ public class UserService {
             event.onLoginNeeded();
         }
     }
+
     private static void runEvents() {
         for (UserLogInEvent event : listener) {
             event.onUserLogIn();
@@ -214,5 +217,19 @@ public class UserService {
                 event.onProfileUpdated();
             }
         }
+    }
+
+    public static List<User> getAll() throws IOException, InterruptedException {
+        HttpRequest httpRequest = HttpRequest.newBuilder()
+                .GET()
+                .uri(URI.create(AUTH_API_END_POINT))
+                .header("Content-Type", "application/json")
+                .header("Authorization", getAuthToken())
+                .build();
+        HttpClient httpClient = HttpClient.newHttpClient();
+        HttpResponse<String> httpResponse = null;
+        httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+        return new Gson().fromJson(httpResponse.body(), new TypeToken<List<User>>() {
+        }.getType());
     }
 }
