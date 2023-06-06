@@ -17,6 +17,7 @@ import java.util.List;
 public class Cart implements Serializable {
     private LocalDate placed_at;
     private List<CartItem> cartItems;
+    private String discount;
 
 
     public double getTotalPrice(){
