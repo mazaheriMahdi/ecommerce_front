@@ -37,6 +37,11 @@ public class NavBar extends HBox {
     public static TextField getTextField() {
         return textField;
     }
+    static {
+        textField = new TextField();
+        textField.setPromptText("Search ... ");
+        textField.setFocusTraversable(false);
+    }
 
 
     public NavBar() {
@@ -66,9 +71,7 @@ public class NavBar extends HBox {
 
     private void init() throws IOException, InterruptedException {
         this.getChildren().clear();
-        textField = new TextField();
-        textField.setPromptText("Search ... ");
-        textField.setFocusTraversable(false);
+
 
 
         HBox search = new HBox();
