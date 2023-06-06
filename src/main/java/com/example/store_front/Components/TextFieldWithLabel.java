@@ -56,8 +56,8 @@ public class TextFieldWithLabel extends VBox {
     public void setValidator(Pattern pattern) {
         TextField textField = (TextField) this.getChildren().get(1);
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!pattern.matcher(newValue).matches()) {
-                this.getChildren().add(2, errorBox);
+            if (!pattern.matcher(newValue).matches()  ) {
+                if(!this.getChildren().contains(errorBox) ) this.getChildren().add(2, errorBox);
             } else {
                 this.getChildren().remove(errorBox);
                 isCorrect = true;
