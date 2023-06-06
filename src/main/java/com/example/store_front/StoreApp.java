@@ -15,10 +15,9 @@ public class StoreApp extends Application {
             UserService.readFromFile();
         }
         Thread.setDefaultUncaughtExceptionHandler((thread, throwable) -> {
-            CustomAlert customAlert = new CustomAlert("Error");
+            CustomAlert customAlert = new CustomAlert(throwable.getMessage());
             customAlert.show();
         });
-
 
 
 

@@ -1,8 +1,7 @@
-package com.example.store_front.Page;
+package com.example.store_front.Page.Admin;
 
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.control.skin.TabPaneSkin;
 
 public class AdminPage extends TabPane {
     public AdminPage() {

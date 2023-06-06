@@ -1,4 +1,4 @@
-package com.example.store_front.Page;
+package com.example.store_front.Page.Admin;
 
 import com.example.store_front.Components.CustomAlert;
 import com.example.store_front.Components.DiscountCard;
