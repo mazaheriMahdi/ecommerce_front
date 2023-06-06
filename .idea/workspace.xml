@@ -4,26 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e16fe36-6b60-4e8e-a01c-59f02c6b2cc4" name="Changes" comment="finish product create logic in adminPage">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/ApplicationCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/ApplicationTab.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Application/ApplicationAcceptedEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Application/ApplicationRejectedEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Application/ApplicationService.java" afterDir="false" />
+    <list default="true" id="4e16fe36-6b60-4e8e-a01c-59f02c6b2cc4" name="Changes" comment="add getAll user to UserService and catch uncached exceptions">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Cart/OnDiscountSetEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/CartItemCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/CartItemCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/OrderItemCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/OrderItemCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/NavBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/NavBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/ProductContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Components/ProductContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/cart/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Models/cart/Cart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/AdminPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/AdminPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/ProductCreateTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/ProductCreateTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/CartPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/CartPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/SingleProductPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Page/SingleProductPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Router/Router.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Router/Router.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Cart/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Cart/CartService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Review/ReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Review/ReviewService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/store_front/StoreApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/store_front/StoreApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,20 +28,17 @@
         <option value="CSS File" />
         <option value="FxmlFile" />
         <option value="Enum" />
+        <option value="Record" />
         <option value="Class" />
         <option value="Interface" />
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="workspaceImportEnabled" value="true" />
-      </MavenImportingSettings>
-    </option>
   </component>
   <component name="ProjectId" id="2QKbO9Jgjo3tNiA2aGLXB9BqpYW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -63,6 +52,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;createAdminArea&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -114,7 +104,10 @@
       <workItem from="1685614079776" duration="15872000" />
       <workItem from="1685692715192" duration="12316000" />
       <workItem from="1685714643844" duration="53804000" />
-      <workItem from="1685951891169" duration="2619000" />
+      <workItem from="1685951891169" duration="7631000" />
+      <workItem from="1685960555008" duration="63000" />
+      <workItem from="1685966732787" duration="734000" />
+      <workItem from="1685967489730" duration="19139000" />
     </task>
     <task id="LOCAL-00001" summary="add id to product">
       <created>1685199465103</created>
@@ -319,27 +312,111 @@
       <option name="project" value="LOCAL" />
       <updated>1685813351526</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="finish application managing in admin panel and fix order and cart item cards bug">
+      <created>1685955554218</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1685955554218</updated>
+    </task>
+    <task id="LOCAL-00031" summary="create discount and discount request model">
+      <created>1686003851534</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1686003851534</updated>
+    </task>
+    <task id="LOCAL-00032" summary="add on login needed exception">
+      <created>1686005017317</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1686005017317</updated>
+    </task>
+    <task id="LOCAL-00033" summary="add discount tab pane and create discount model &#10;create DiscountService">
+      <created>1686005127184</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1686005127184</updated>
+    </task>
+    <task id="LOCAL-00034" summary="start creating category service">
+      <created>1686005161135</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1686005161135</updated>
+    </task>
+    <task id="LOCAL-00035" summary="add category change event to CategoryService">
+      <created>1686060400854</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1686060400854</updated>
+    </task>
+    <task id="LOCAL-00036" summary="show custome alert when category added">
+      <created>1686060427622</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1686060427622</updated>
+    </task>
+    <task id="LOCAL-00037" summary="add category tab to admin page">
+      <created>1686060477165</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1686060477165</updated>
+    </task>
+    <task id="LOCAL-00038" summary="remove unused codes">
+      <created>1686060507197</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1686060507197</updated>
+    </task>
+    <task id="LOCAL-00039" summary="add isStaff to user">
+      <created>1686060525636</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1686060525636</updated>
+    </task>
+    <task id="LOCAL-00040" summary="create user card component">
+      <created>1686060540815</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1686060540815</updated>
+    </task>
+    <task id="LOCAL-00041" summary="user tab for admin page">
+      <created>1686060559238</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1686060559238</updated>
+    </task>
+    <task id="LOCAL-00042" summary="show category in product create tab in comboBox">
+      <created>1686060615308</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1686060615308</updated>
+    </task>
+    <task id="LOCAL-00043" summary="add getAll user to UserService and catch uncached exceptions">
+      <created>1686060660013</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1686060660013</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add permission to gson to models" />
-    <MESSAGE value="create add to cart request model for sending to backend" />
-    <MESSAGE value="add cart endpoint to Constant.java" />
-    <MESSAGE value="create logic for sending addCartItemRequestModel to backend" />
-    <MESSAGE value="fix id in product services" />
-    <MESSAGE value="add click event to product cart" />
-    <MESSAGE value="create exception for handling cart exception" />
-    <MESSAGE value="create custome alert pane" />
-    <MESSAGE value="add MessageResponseModel and create custome event for adding to cart &#10;create event handler which is gonna handle all event" />
-    <MESSAGE value="create router class move StoreApp code to MainPage and create SingleProductPage &#10;create Router for routing ." />
-    <MESSAGE value="create controller that show an indicator when image is loading" />
-    <MESSAGE value="add back and add to cart btn to SingleProductPage" />
-    <MESSAGE value="handle pagination logics" />
-    <MESSAGE value="add comment text field to SingleProductPage" />
     <MESSAGE value="add pages list for handling back and track user path" />
     <MESSAGE value="add Review model" />
     <MESSAGE value="add gitignore to git" />
@@ -351,19 +428,33 @@
     <MESSAGE value="create ProductRequestModel and write logic for sending ad product to server" />
     <MESSAGE value="add to string to product model &#10;and create admin page components" />
     <MESSAGE value="finish product create logic in adminPage" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish product create logic in adminPage" />
+    <MESSAGE value="finish application managing in admin panel and fix order and cart item cards bug" />
+    <MESSAGE value="create discount and discount request model" />
+    <MESSAGE value="add on login needed exception" />
+    <MESSAGE value="add discount tab pane and create discount model &#10;create DiscountService" />
+    <MESSAGE value="start creating category service" />
+    <MESSAGE value="add category change event to CategoryService" />
+    <MESSAGE value="show custome alert when category added" />
+    <MESSAGE value="add category tab to admin page" />
+    <MESSAGE value="remove unused codes" />
+    <MESSAGE value="add isStaff to user" />
+    <MESSAGE value="create user card component" />
+    <MESSAGE value="user tab for admin page" />
+    <MESSAGE value="show category in product create tab in comboBox" />
+    <MESSAGE value="add getAll user to UserService and catch uncached exceptions" />
+    <option name="LAST_COMMIT_MESSAGE" value="add getAll user to UserService and catch uncached exceptions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/store_front/Service/User/UserService.java</url>
-          <line>111</line>
+          <line>177</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/store_front/Service/Cart/CartService.java</url>
-          <line>113</line>
+          <line>121</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
