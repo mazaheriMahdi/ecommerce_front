@@ -37,7 +37,6 @@ public class SingleProductPage extends BorderPane {
 
         this.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         this.getStyleClass().add("darkPrimaryBack");
-        this.setTop(new NavBar());
 
 
         ImageViewWithSpinner imageViewWithSpinner = new ImageViewWithSpinner(product.getImage(), 200, 200);
