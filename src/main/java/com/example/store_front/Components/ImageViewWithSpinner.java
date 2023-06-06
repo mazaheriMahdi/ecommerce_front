@@ -24,8 +24,8 @@ public class ImageViewWithSpinner extends VBox {
 
         Image image = new Image(url, true);
 
-            ImageView imageView = new ImageView();
-            imageView.getStyleClass().add("roundedBG");
+
+
             this.setAlignment(Pos.CENTER);
             this.getChildren().add(progressBar);
             image.progressProperty().addListener((observable, oldValue, newValue) -> {
@@ -33,6 +33,7 @@ public class ImageViewWithSpinner extends VBox {
                             try {
                                 if (image != null){
                                     ImagePattern imagePattern = new ImagePattern(image, 0, 0, 1, 1, true);
+
                                     Rectangle rectangle = new Rectangle(width, height);
                                     rectangle.setFill(imagePattern);
                                     rectangle.getStyleClass().add("roundedBG");
