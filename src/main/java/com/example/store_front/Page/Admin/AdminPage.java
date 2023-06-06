@@ -1,5 +1,8 @@
 package com.example.store_front.Page.Admin;
 
+import com.example.store_front.Models.User;
+import com.example.store_front.Service.User.UserService;
+import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 
@@ -7,6 +10,8 @@ public class AdminPage extends TabPane {
     public AdminPage() {
         this.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         this.getStyleClass().add("darkPrimaryBack");
+
+
         Tab products = new Tab("Products");
         products.setContent(new ProductCreateTab());
         Tab orders = new Tab("Application");

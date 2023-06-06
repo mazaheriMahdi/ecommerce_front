@@ -67,5 +67,9 @@ public class EventHandler {
             categoryAddedAlert.show();
         });
 
+        UserService.addOnUserLogoutListener(()->{
+            Router.toMainPage();
+        });
+
     }
 }

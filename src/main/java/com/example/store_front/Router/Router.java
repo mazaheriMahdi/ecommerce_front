@@ -149,6 +149,7 @@ public class Router {
         stage.setScene(new Scene(new AdminPage(), screenWeight, screenHeight));
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
+        UserService.addOnUserLogoutListener(()->stage.close());
     }
 
     public static void toSignInPage() {
