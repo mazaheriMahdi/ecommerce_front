@@ -13,8 +13,11 @@ public class AdminPage extends TabPane {
         Tab orders = new Tab("Application");
         orders.setContent(new ApplicationTab());
         Tab categories = new Tab("Categories");
+        categories.setContent(new CategoryTab());
         Tab discounts = new Tab("Discounts");
+        discounts.setContent(new DiscountTabPane());
         Tab users = new Tab("Users");
+        users.setContent(new UserTab());
         Tab profile = new Tab("Profile");
         this.getTabs().addAll(products,discounts,categories, orders, users, profile);
 
@@ -22,6 +25,7 @@ public class AdminPage extends TabPane {
         products.setClosable(false);
         orders.setClosable(false);
         users.setClosable(false);
+        discounts.setClosable(false);
         profile.setClosable(false);
 
 
