@@ -3,14 +3,13 @@ package com.example.store_front.Page;
 
 import com.example.store_front.Components.TextFieldWithLabel;
 import com.example.store_front.Models.RequestModel.PaymentRequestModel;
-import com.example.store_front.Service.PaymentService;
+import com.example.store_front.Service.Payment.PaymentService;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;

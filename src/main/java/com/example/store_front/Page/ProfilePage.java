@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -54,10 +55,19 @@ public class ProfilePage extends VBox {
         VBox vBox = new VBox();
         vBox.setAlignment(Pos.CENTER);
         vBox.setSpacing(20);
+        Text text = new Text("Your Discounts");
+        text.setFill(Color.WHITE);
+        text.setFont(Font.font("Verdana", 20));
+        vBox.getChildren().add(text);
+        vBox.setAlignment(Pos.CENTER_LEFT);
         try {
             DiscountService.getAllDiscounts().forEach(
                     discount -> {
-                        vBox.getChildren().add(new Text(discount.toString()));
+                        Text discountText = new Text(discount.code());
+                        discountText.setFill(Color.WHITE);
+
+
+                        vBox.getChildren().add(discountText);
                     }
             );
         } catch (IOException | InterruptedException e) {

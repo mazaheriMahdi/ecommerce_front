@@ -31,6 +31,7 @@ public class UserTab extends BorderPane {
         Button button = new Button("Logout");
         button.getStyleClass().add("loginPageBtn");
         button.setOnMouseClicked(event -> {
+            this.getScene().getWindow().hide();
             UserService.logout();
         });
         root.getChildren().add(button);

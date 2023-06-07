@@ -204,6 +204,10 @@
 .scroll-pane{
     -fx-background-color: #1B222C;
     -fx-border-width: 0;
+
+}
+.scroll-pane .scroll-bar{
+    --body-background-color: transparent;
 }
 .height200{
     -fx-min-height: 130px;

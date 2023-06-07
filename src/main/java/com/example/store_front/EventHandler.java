@@ -7,6 +7,8 @@ import com.example.store_front.Service.Cart.CartService;
 import com.example.store_front.Service.Category.CategoryService;
 import com.example.store_front.Service.Discount.DiscountService;
 import com.example.store_front.Service.Order.OrderService;
+import com.example.store_front.Service.Payment.PaymentService;
+import com.example.store_front.Service.Product.ProductService;
 import com.example.store_front.Service.Review.ReviewService;
 import com.example.store_front.Service.User.UserService;
 
@@ -71,5 +73,16 @@ public class EventHandler {
             Router.toMainPage();
         });
 
+        ProductService.addOnProductCreatedEvent(()->{
+            CustomAlert customAlert1 = new CustomAlert("Product Added");
+            customAlert1.show();
+        });
+
+        PaymentService.addOnPaymentAddedEvent(
+                ()->{
+                    CustomAlert customAlert1 = new CustomAlert("Payment Added");
+                    customAlert1.show();
+                }
+        );
     }
 }

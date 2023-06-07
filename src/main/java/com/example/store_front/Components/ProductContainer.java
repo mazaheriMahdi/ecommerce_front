@@ -10,13 +10,14 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductContainer extends FlowPane {
+public class ProductContainer extends TilePane {
     private final ProductService productService = new ProductService();
     private final ProgressBar progressBar = new ProgressBar();
 

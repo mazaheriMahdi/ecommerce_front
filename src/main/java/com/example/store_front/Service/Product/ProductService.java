@@ -3,7 +3,6 @@ package com.example.store_front.Service.Product;
 import com.example.store_front.Models.Category;
 import com.example.store_front.Models.Product;
 import com.example.store_front.Models.RequestModel.CreateProductRequestModel;
-import com.example.store_front.Models.RequestModel.ProductRequestModel;
 import com.example.store_front.Models.ResponseModel.PagesResponseModel;
 import com.example.store_front.Service.User.UserService;
 import com.google.gson.Gson;
@@ -23,9 +22,18 @@ import static com.example.store_front.Constant.PRODUCT_API_END_POINT;
 public class ProductService {
 
     static List<PageChangeEvent> listener;
+    private static List<OnProductCreatedEvent> onProductCreatedEvents;
+
+    public static void addOnProductCreatedEvent(OnProductCreatedEvent onProductCreatedEvent){
+        onProductCreatedEvents.add(onProductCreatedEvent);
+    }
+
+
+
 
     static {
         listener = new ArrayList<>();
+        onProductCreatedEvents = new ArrayList<>();
     }
 
     public static void runEvents() {
@@ -150,7 +158,12 @@ public class ProductService {
                 .build();
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpResponse<String> response = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+
         System.out.println(response.body());
+        for (OnProductCreatedEvent event : onProductCreatedEvents) {
+            event.onProductCreated();
+
+        }
 
     }
 }

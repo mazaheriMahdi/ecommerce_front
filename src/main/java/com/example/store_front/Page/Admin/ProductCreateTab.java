@@ -12,6 +12,7 @@ import com.example.store_front.Service.Product.ProductService;
 import com.example.store_front.Service.Product.PropertyKeyService;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -32,6 +33,8 @@ public class ProductCreateTab extends BorderPane {
     private List<KeyValueTextFiled> keyValueTextFiled;
     VBox center = new VBox();
 
+    Boolean isFirstTime = true;
+
     public List<KeyValueTextFiled> getKeyValueTextFiled() {
         return keyValueTextFiled;
     }
@@ -43,7 +46,7 @@ public class ProductCreateTab extends BorderPane {
 
     public void addKeyValueTextFiled() {
         try {
-            List<Map<String , String>> list = PropertyKeyService.getAll();
+            List<Map<String, String>> list = PropertyKeyService.getAll();
             List<String> nameList = new ArrayList<>();
             for (Map<String, String> map : list) {
                 nameList.add(map.get("name"));
@@ -66,9 +69,13 @@ public class ProductCreateTab extends BorderPane {
     }
 
     public void init() {
-        this.getChildren().clear();
+        if (!isFirstTime) {
+            center.getChildren().remove(5, center.getChildren().size());
+        }
+
         TextFieldWithLabel name = new TextFieldWithLabel("Name");
         TextFieldWithLabel price = new TextFieldWithLabel("Price");
+        price.getTextField().textProperty().addListener((w, e, r) -> System.out.println(price.getTextField().getText()));
         TextFieldWithLabel count = new TextFieldWithLabel("Count");
         TextFieldWithLabel image = new TextFieldWithLabel("Image URL");
 
@@ -90,6 +97,7 @@ public class ProductCreateTab extends BorderPane {
         center.setFillWidth(true);
         center.setSpacing(20);
         center.setAlignment(Pos.CENTER);
+        center.setPadding(new Insets(100, 0, 100, 0));
 
         Button addKeyValueTextFiled = new Button();
         addKeyValueTextFiled.getStyleClass().add("darkAccent");
@@ -101,10 +109,10 @@ public class ProductCreateTab extends BorderPane {
         });
 
         this.getKeyValueTextFiled().clear();
-        center.getChildren().clear();
-        center.getChildren().addAll(name, price, count, image, category);
+        if (isFirstTime) center.getChildren().addAll(name, price, count, image, category);
         center.getChildren().addAll(keyValueTextFiled);
-        center.getChildren().addAll(btnBox(),addKeyValueTextFiled, button);
+        center.getChildren().addAll(btnBox(), addKeyValueTextFiled, button);
+
         HBox centerHbox = new HBox(center);
         centerHbox.getStyleClass().add("darkPrimaryBack");
 
@@ -116,16 +124,20 @@ public class ProductCreateTab extends BorderPane {
 
 
         button.setOnMouseClicked(mouseEvent -> {
-            ProductRequestModel product = new ProductRequestModel();
-            product.setName(name.getTextField().getText());
-            product.setImage(image.getTextField().getText());
-            product.setPrice(Integer.parseInt(price.getTextField().getText()));
-            product.setCount(Integer.parseInt(count.getTextField().getText()));
-            product.setCategory(new Category(1L, "CAR"));
+            int countValue = 0;
+            double priceValue = 0;
+            ProductRequestModel product = new ProductRequestModel(
+                    name.getTextField().getText(),
+                    countValue,
+                    priceValue,
+                    0,
+                    new Category(Long.valueOf(category.getComboBox().getSelectionModel().getSelectedIndex()) + 1, category.getComboBox().getSelectionModel().getSelectedItem()),
+                    image.getTextField().getText()
+            );
+
+
             List<Map<String, String>> productProperties = new ArrayList<>() {
             };
-            System.out.println(product.toString());
-            System.out.println(keyValueTextFiled.size());
             for (KeyValueTextFiled keyValueTextFiled1 : keyValueTextFiled) {
                 productProperties.add(keyValueTextFiled1.getMap());
             }
@@ -140,44 +152,45 @@ public class ProductCreateTab extends BorderPane {
             }
 
         });
+        isFirstTime = false;
 
     }
 
-    public static Map<String, List<String>> getPropertyMap(){
-        Map<String , List<String>> map = new HashMap<>();
+    public static Map<String, List<String>> getPropertyMap() {
+        Map<String, List<String>> map = new HashMap<>();
         List<String> carPreset = new ArrayList<>();
         carPreset.add("Engine Capacity");
         carPreset.add("Is Automatic");
         carPreset.add("Company");
-        map.put("Car preset" , carPreset);
+        map.put("Car preset", carPreset);
 
         List<String> stationeryPreset = new ArrayList<>();
         stationeryPreset.add("Made in");
-        map.put("Stationery preset" , stationeryPreset);
+        map.put("Stationery preset", stationeryPreset);
 
         List<String> phonePreset = new ArrayList<>();
         phonePreset.add("Screen Size");
         phonePreset.add("Camera Pixel");
         phonePreset.add("Battery Capacity");
         phonePreset.add("Company");
-        map.put("Phone preset" , phonePreset);
+        map.put("Phone preset", phonePreset);
 
         List<String> ssdPreset = new ArrayList<>();
         ssdPreset.add("Capacity");
         ssdPreset.add("Company");
-        map.put("SSD preset" , ssdPreset);
+        map.put("SSD preset", ssdPreset);
 
         List<String> laptopPreset = new ArrayList<>();
         laptopPreset.add("Screen Size");
         laptopPreset.add("Ram");
         laptopPreset.add("CPU");
         laptopPreset.add("Company");
-        map.put("Laptop preset" , laptopPreset);
+        map.put("Laptop preset", laptopPreset);
 
         List<String> tvPreset = new ArrayList<>();
         tvPreset.add("Screen Size");
         tvPreset.add("Company");
-        map.put("TV preset" , tvPreset);
+        map.put("TV preset", tvPreset);
 
 
         return map;
@@ -185,7 +198,7 @@ public class ProductCreateTab extends BorderPane {
 
     }
 
-    public  FlowPane btnBox(){
+    public FlowPane btnBox() {
         FlowPane flowPane = new FlowPane();
         flowPane.setAlignment(Pos.CENTER_LEFT);
         flowPane.setHgap(10);
@@ -194,7 +207,7 @@ public class ProductCreateTab extends BorderPane {
         flowPane.setMaxWidth(400);
         flowPane.setMinWidth(400);
 
-        getPropertyMap().forEach((key , value) -> {
+        getPropertyMap().forEach((key, value) -> {
             Button button = new Button(key);
             button.getStyleClass().add("darkAccent");
             button.setOnMouseClicked(mouseEvent -> {
